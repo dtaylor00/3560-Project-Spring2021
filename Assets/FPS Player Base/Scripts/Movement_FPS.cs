@@ -32,7 +32,6 @@ using UnityEngine.InputSystem;
 public class Movement_FPS : MonoBehaviour
 {
     //Static variables 
-
     private static float SPEED = 10f;
 
     //Serialized vars
