@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class ZombieAI : MonoBehaviour
 {
     NavMeshAgent nm;    
     public Transform target;
     public enum AIState {chasing, attack};
     public AIState aiState;
+    public float speed;
+
 
     //public AIState aiState;
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class EnemyAI : MonoBehaviour
             switch(aiState){
                 case AIState.chasing:
                     nm.SetDestination(target.position);
+                    nm.speed = speed;
                     break;
                 case AIState.attack:
                     break;
