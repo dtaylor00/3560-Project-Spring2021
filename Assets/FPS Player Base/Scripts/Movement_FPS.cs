@@ -57,10 +57,9 @@ public class Movement_FPS : MonoBehaviour
     * //private AnimationCurve decelerationCurve;
     ****************/
 
-    /*
-     * @name: maxYAngle
-     * @desc: Max angle for the attached camera's y rotation. Will be used for both positive and negative values.
-     */
+    /// <summary>
+    /// XML GJAKWK"J:   
+    /// </summary>
     [SerializeField]
     [Tooltip("The angle the player can look up/down")]
     private float maxYAngle = 90f;
