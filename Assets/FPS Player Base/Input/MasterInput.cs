@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/MasterInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/FPS Player Base/Input/MasterInput.inputactions'
 
 using System;
 using System.Collections;
