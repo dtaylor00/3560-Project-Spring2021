@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class ZombieAI : MonoBehaviour
+public abstract class ZombieAI : MonoBehaviour
 {
     NavMeshAgent nm;    
     public Transform target;
     public enum AIState {chasing, attack};
-    public AIState aiState;
+    protected AIState aiState;
     public float speed;
     //public AIState aiState;
     // Start is called before the first frame update
-    void Start()
+
+    protected void Start()
     {
         nm = GetComponent<NavMeshAgent>(); 
         aiState = AIState.chasing;
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(Think());
     }
-    IEnumerator Think(){
+
+    protected IEnumerator Think(){
         while(true){
             if(nm.speed < 20){
                 nm.speed = 5+Mathf.Sqrt(Time.time);
@@ -46,9 +48,9 @@ public class ZombieAI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //impliment me!
+    protected abstract void Chasing();
+
+    //impliment me!
+    protected abstract void Attack();
 }
