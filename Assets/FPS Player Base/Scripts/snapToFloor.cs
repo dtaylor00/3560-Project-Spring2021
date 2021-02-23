@@ -36,7 +36,8 @@ public class snapToFloor : MonoBehaviour
     private void Awake()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, new Vector3(0, -200, 0));
+        float inf = float.MaxValue;
+        Debug.DrawRay(transform.position, new Vector3(0, -inf, 0));
         if (Physics.Raycast(new Ray(transform.position, Vector3.down), out hit, 200))
         {
             print("got here");
