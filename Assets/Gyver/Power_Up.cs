@@ -8,6 +8,7 @@ public class Power_Up : MonoBehaviour
     {
         if(other.gameObject.tag == "Player"){
             other.gameObject.GetComponent<Movement_FPS>().jumpHeight = 20f;
+            Destroy(this.gameObject);
         }
     }
 }
