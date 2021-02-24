@@ -72,7 +72,7 @@ public class Movement_FPS : MonoBehaviour
      */
     [SerializeField]
     [Tooltip("Height the player can jump")]
-    private float jumpHeight = 10f;
+    public float jumpHeight = 10f;
 
     /*
      * @name: airControl
