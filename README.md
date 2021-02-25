@@ -18,11 +18,11 @@ Compliation/Deploy/Run
 Unity has an inbuilt quick compiler so it is possible to open up the source files and run it directly in unity. Also, under file you can click build to generate an executable for an operating system of your choice.
 The link to the repo is: https://github.com/hi-names-nat/3560-Project-Spring2021
 
-i.	What language are we leaning toward?
-We will be using C# for this project.
-ii.	What would be an editor? Do we need an IDE?
-Visual Studio and Unity, Yes
-iii.	What is the version control software (Git, Mercurial, or SVN)?
-iv.	Are we using framework or library? If yes, what is it?
-v.	Any tool for documentation?
-vi.	Should there be a build system? Gradle, ant, npm etc?
+What language are we leaning toward?
+  We will be using C# for this project.
+What would be an editor? Do we need an IDE?
+  Visual Studio and Unity, Yes
+What is the version control software (Git, Mercurial, or SVN)?
+Are we using framework or library? If yes, what is it?
+Any tool for documentation?
+Should there be a build system? Gradle, ant, npm etc?
