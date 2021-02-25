@@ -1,19 +1,43 @@
 # 3560-Project-Spring2021
-Natalie Soltis
-Evan Walsh
-Nick Schuler
-Gyver Blessing
-Anthony Giordano
-Dakota Taylor
 
-Maintainer - Natalie
+## Members
+#### Maintainer
+Natalie Soltis - hi-names-nat <br>
 
-Tuesday-Thursday class at 10:30 AM to 11:50 AM
-Meeting Times are Monday from 3-4 PM and Tuesday 3-4 PM
+#### Developers
+Natalie Soltis - hi-names-nat <br>
+Dakota Taylor - dtaylor00 <br>
+Gyver Blessing - Gyver-Blessing <br>
+Anthony Giordano - Anthony3714 <br>
+Evan Walsh - Evan-Walsh1 <br>
+Nick Schuler - Nick-Schuler <br>
+<br>
 
-Description:
-This project is a metroidvania zombie first person shooter. There will be a couple types of enemies with weapons and upgrades that are collectable. There will be an end to the game.
+## Details
+**Class Meeting**: 10:30am - 11:50am on Tuesdays and Thursdays <br>
+**Team Meeting**: 3:00pm - 4:00pm on Mondays and Tuesdays <br>
 
-Compliation/Deploy/Run
-Unity has an inbuilt quick compiler so it is possible to open up the source files and run it directly in unity. Also, under file you can click build to generate an executable for an operating system of your choice.
-The link to the repo is: https://github.com/hi-names-nat/3560-Project-Spring2021
+**Brief Description**: This project is a metroidvania zombie first person shooter, inspired by the likes of Black Ops: Zombies and Metroid Prime. There will be a couple types of enemies the player must face with various weapons and collectable upgrades. The goal of the game is to survive as long as possible and reach the end.
+
+## Compliation/Deploy/Run
+Unity has an inbuilt quick compiler so it is possible to open up the source files and run it directly in Unity. Also, under file you can click build to generate an executable for an operating system of your choice.
+
+**Repo Link**: https://github.com/hi-names-nat/3560-Project-Spring2021
+
+## Minimum Viable Product
+ - [x] At least one gun
+ - [x] FPS player controller
+ - [ ] Enemy zombie AI
+ - [ ] Second enemy AI 
+ - [ ] Upgrade system
+ - [ ] Level design
+ - [x] Health system
+
+## Final Deliverable Product / Stretch Goals
+ - [ ] More weapons
+ - [ ] Roguelite random stats
+ - [ ] Many zombies
+ - [ ] Multiple level
+ - [ ] More upgrades
+ - [ ] Ending to game
+ - [ ] Multiplayer
