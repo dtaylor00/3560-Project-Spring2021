@@ -19,11 +19,11 @@ Unity has an inbuilt quick compiler so it is possible to open up the source file
 The link to the repo is: https://github.com/hi-names-nat/3560-Project-Spring2021
 
 What language are we leaning toward?  
-> We will be using C# for this project.  
+- We will be using C# for this project.  
 What would be an editor? Do we need an IDE?  
-> Visual Studio and Unity, Yes  
+- Visual Studio and Unity, Yes  
 What is the version control software (Git, Mercurial, or SVN)?  
 Are we using framework or library? If yes, what is it?  
 Any tool for documentation?  
 Should there be a build system? Gradle, ant, npm etc?  
-> We will be using Unity's inbuilt build system to build and run our project.  
+- We will be using Unity's inbuilt build system to build and run our project.  
