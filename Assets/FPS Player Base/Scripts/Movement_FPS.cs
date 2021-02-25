@@ -243,6 +243,8 @@ public class Movement_FPS : MonoBehaviour
         inputController.Player.SwitchPerspective.performed += _ /*context is not used, so we put a _ to signify. */ => SwitchCameraPos();
 
         inputController.Player.Use.performed += _ => Use();
+
+        inputController.Player.LockCursor.performed += _ => ToggleCursorLock();
     }
 
     private void OnDisable()
@@ -267,6 +269,8 @@ public class Movement_FPS : MonoBehaviour
         inputController.Player.SwitchPerspective.performed -= _ /*context is not used, so we put a _ to signifiy.. */  => SwitchCameraPos();
 
         inputController.Player.Use.performed -= _ => Use();
+
+        inputController.Player.LockCursor.performed -= _ => ToggleCursorLock();
     }
 
     private void FixedUpdate()
@@ -446,5 +450,20 @@ public class Movement_FPS : MonoBehaviour
         }
         //play fail sound
         return;
+    }
+
+    // Temporary function to lock the cursor to the screen (was too annoying to keep clicking outside the screen)
+    private bool lockCursor = false;
+    private void ToggleCursorLock() {
+        lockCursor = !lockCursor;
+        if (lockCursor) {
+            Debug.Log("locking...");
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        } else {
+            Debug.Log("unlocking...");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }

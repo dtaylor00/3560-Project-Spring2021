@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/FPS Player Base/Input/MasterInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Anthony/FPS Player Base/Input/MasterInput.inputactions'
 
 using System;
 using System.Collections;
@@ -62,6 +62,30 @@ public class @MasterInput : IInputActionCollection, IDisposable
                     ""name"": ""Use"",
                     ""type"": ""Button"",
                     ""id"": ""781e4d13-3100-4d4e-950f-f9609a3358d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""94e55c96-3534-4a4f-8f9c-f92ccbd3e994"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Lock Cursor"",
+                    ""type"": ""Button"",
+                    ""id"": ""3553dd7a-05fc-44ae-92d9-26906e4fd2bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea650fe2-e764-4f01-a74e-0ceca87ce197"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -340,6 +364,72 @@ public class @MasterInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2c20e1b-593f-4f9a-90e5-fa58ff892521"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2f07319-882e-4ad9-b7bc-07861d9ea3a4"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock Cursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61134faf-9b0d-4366-bf15-bb9383bf6f32"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock Cursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e65a8ca5-a879-41ff-89e4-bc4c4f216654"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46aa5efc-cd52-4e81-b3ba-10b8c2257f41"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a589f53-6b79-4c39-9800-da4da6852ef1"",
+                    ""path"": ""<XRController>/{SecondaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -923,6 +1013,9 @@ public class @MasterInput : IInputActionCollection, IDisposable
         m_Player_SwitchPerspective = m_Player.FindAction("Switch Perspective", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
+        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_LockCursor = m_Player.FindAction("Lock Cursor", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -990,6 +1083,9 @@ public class @MasterInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SwitchPerspective;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Use;
+    private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_LockCursor;
+    private readonly InputAction m_Player_Aim;
     public struct PlayerActions
     {
         private @MasterInput m_Wrapper;
@@ -1000,6 +1096,9 @@ public class @MasterInput : IInputActionCollection, IDisposable
         public InputAction @SwitchPerspective => m_Wrapper.m_Player_SwitchPerspective;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Use => m_Wrapper.m_Player_Use;
+        public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @LockCursor => m_Wrapper.m_Player_LockCursor;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1027,6 +1126,15 @@ public class @MasterInput : IInputActionCollection, IDisposable
                 @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                 @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                 @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
+                @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @LockCursor.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockCursor;
+                @LockCursor.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockCursor;
+                @LockCursor.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockCursor;
+                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1049,6 +1157,15 @@ public class @MasterInput : IInputActionCollection, IDisposable
                 @Use.started += instance.OnUse;
                 @Use.performed += instance.OnUse;
                 @Use.canceled += instance.OnUse;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
+                @LockCursor.started += instance.OnLockCursor;
+                @LockCursor.performed += instance.OnLockCursor;
+                @LockCursor.canceled += instance.OnLockCursor;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -1211,6 +1328,9 @@ public class @MasterInput : IInputActionCollection, IDisposable
         void OnSwitchPerspective(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnLockCursor(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
