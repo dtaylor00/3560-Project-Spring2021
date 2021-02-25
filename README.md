@@ -23,7 +23,7 @@ What language are we leaning toward?
 What would be an editor? Do we need an IDE?  
 - Visual Studio and Unity, Yes  
 What is the version control software (Git, Mercurial, or SVN)?  
-Git
+- Git
 Are we using framework or library? If yes, what is it?  
 Any tool for documentation?  
 - We are currently not using tools for documentation. We are using XML comments.
