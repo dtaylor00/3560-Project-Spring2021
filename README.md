@@ -21,6 +21,7 @@ The link to the repo is: https://github.com/hi-names-nat/3560-Project-Spring2021
 i.	What language are we leaning toward?
 We will be using C# for this project.
 ii.	What would be an editor? Do we need an IDE?
+Visual Studio and Unity, Yes
 iii.	What is the version control software (Git, Mercurial, or SVN)?
 iv.	Are we using framework or library? If yes, what is it?
 v.	Any tool for documentation?
