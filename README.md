@@ -41,3 +41,15 @@ Unity has an inbuilt quick compiler so it is possible to open up the source file
  - [ ] More upgrades
  - [ ] Ending to game
  - [ ] Multiplayer
+
+What language are we leaning toward?  
+- We will be using C# for this project.  
+What would be an editor? Do we need an IDE?  
+- Visual Studio and Unity, Yes  
+What is the version control software (Git, Mercurial, or SVN)?  
+- Git  
+Are we using framework or library? If yes, what is it?  
+Any tool for documentation?  
+- We are currently not using tools for documentation. We are using XML comments.
+Should there be a build system? Gradle, ant, npm etc?  
+- We will be using Unity's inbuilt build system to build and run our project.  
