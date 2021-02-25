@@ -26,3 +26,4 @@ What is the version control software (Git, Mercurial, or SVN)?
 Are we using framework or library? If yes, what is it?
 Any tool for documentation?
 Should there be a build system? Gradle, ant, npm etc?
+  We will be using Unity's inbuilt build system to build and run our project.
