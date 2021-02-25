@@ -6,6 +6,8 @@ Gyver Blessing
 Anthony Giordano
 Dakota Taylor
 
+Maintainer - Natalie
+
 Tuesday-Thursday class at 10:30 AM to 11:50 AM
 Meeting Times are Monday from 3-4 PM and Tuesday 3-4 PM
 
