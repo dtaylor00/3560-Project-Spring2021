@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIHealth : MonoBehaviour
+public class n : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,5 +16,3 @@ public class AIHealth : MonoBehaviour
         
     }
 }
-
-//Need to make
