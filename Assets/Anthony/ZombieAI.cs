@@ -13,6 +13,7 @@ public abstract class ZombieAI : MonoBehaviour
     protected float dist;
     public void Start()
     {
+        
         nm = GetComponent<NavMeshAgent>(); 
         aiState = AIState.chasing;
         target = GameObject.FindGameObjectWithTag("Player").transform;

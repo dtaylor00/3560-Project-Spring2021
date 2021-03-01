@@ -22,7 +22,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Timeline;
+//using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +32,6 @@ using UnityEngine.InputSystem;
 public class Movement_FPS : MonoBehaviour
 {
     //Static variables 
-
     private static float SPEED = 10f;
 
     //Serialized vars
@@ -58,10 +57,9 @@ public class Movement_FPS : MonoBehaviour
     * //private AnimationCurve decelerationCurve;
     ****************/
 
-    /*
-     * @name: maxYAngle
-     * @desc: Max angle for the attached camera's y rotation. Will be used for both positive and negative values.
-     */
+    /// <summary>
+    /// XML GJAKWK"J:   
+    /// </summary>
     [SerializeField]
     [Tooltip("The angle the player can look up/down")]
     private float maxYAngle = 90f;
@@ -73,6 +71,11 @@ public class Movement_FPS : MonoBehaviour
     [SerializeField]
     [Tooltip("Height the player can jump")]
     private float jumpHeight = 10f;
+
+    /// <summary>
+    /// multiplied to the applied speed of the player when the Sprint key is pressed.
+    /// </summary>
+    public float sprintModifier = 1f;
 
     /*
      * @name: airControl
@@ -194,6 +197,8 @@ public class Movement_FPS : MonoBehaviour
     [NonSerialized]
     public GameObject target = null;
 
+    private float sMod = 1f;
+
 
 
     // NOT USED IN CURRENT IT
@@ -247,6 +252,8 @@ public class Movement_FPS : MonoBehaviour
         inputController.Player.Use.performed += _ => Use();
 
         inputController.Player.LockCursor.performed += _ => ToggleCursorLock();
+
+        inputController.Player.Sprint.performed += _ => switchSprint();
     }
 
     private void OnDisable()
@@ -300,8 +307,9 @@ public class Movement_FPS : MonoBehaviour
 
             //creation and assignment of new velocity, called transformForce.
             Vector3 transformForce = transform.forward * movementForce.y + transform.right * movementForce.x;
-            transformForce = new Vector3(transformForce.normalized.x * curveFloat, transformForce.y, transformForce.normalized.z * curveFloat);
+            transformForce = new Vector3(transformForce.normalized.x * curveFloat * sMod, transformForce.y, transformForce.normalized.z * curveFloat * sMod);
             transformForce.y = transform.GetComponent<Rigidbody>().velocity.y;
+            print(sMod);
             transform.GetComponent<Rigidbody>().velocity = transformForce;
 
 
@@ -467,5 +475,10 @@ public class Movement_FPS : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+    }
+
+    private void switchSprint()
+    {
+        sMod = sMod == sprintModifier ? 1f : sprintModifier;
     }
 }
