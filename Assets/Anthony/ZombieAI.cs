@@ -14,6 +14,7 @@ public abstract class ZombieAI : MonoBehaviour
 
     protected void Start()
     {
+        
         nm = GetComponent<NavMeshAgent>(); 
         aiState = AIState.chasing;
         target = GameObject.FindGameObjectWithTag("Player").transform;
