@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e3ee9ed601e0f459b72029514baf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealthController: {fileID: 0}
   target: {fileID: 0}
 --- !u!195 &371295692
 NavMeshAgent:
@@ -493,6 +494,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1391526108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7449159818482987997, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
+  m_PrefabInstance: {fileID: 1920352565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1391526109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391526108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1eb594aa77bd14b8f93aac176caef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1441787887
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7449159818482987970, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.050331
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: 7449159818482987970, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
       propertyPath: m_LocalPosition.z

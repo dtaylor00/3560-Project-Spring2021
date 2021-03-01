@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public abstract class ZombieAI : MonoBehaviour
 {
+    public Health playerHealthController;
     protected NavMeshAgent nm;    
     public Transform target;
     public enum AIState {chasing, attack};
@@ -20,6 +21,7 @@ public abstract class ZombieAI : MonoBehaviour
 
     protected IEnumerator Think(){
         while(true){
+            playerHealthController = target.GetComponent<Health>(); 
             dist = Vector3.Distance(target.position, transform.position);
             switch(aiState){
                 case AIState.chasing:
