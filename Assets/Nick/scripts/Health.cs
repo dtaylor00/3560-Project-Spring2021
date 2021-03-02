@@ -31,7 +31,8 @@ public class Health : MonoBehaviour
     }
 
     private void Update(){
-        if (InputSystem.GetDevice<Keyboard>().eKey.wasPressedThisFrame)
+        var keyboard = Keyboard.current;
+        if (keyboard.eKey.wasPressedThisFrame)
             ModifyHealth(-10);
 
         print(currentHealth);
