@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public abstract class szAI : MonoBehaviour
-{
-    NavMeshAgent nm;
-    public Transform target;
-    public enum AIState { chasing, attack, lunge };
-    protected AIState aiState;
-    public float speed;
-    //public AIState aiState;
-    // Start is called before the first frame update
 
-    protected void Start()
+public abstract class szAI:MonoBehaviour
+{
+    public Health playerHealthController;
+    protected NavMeshAgent hh;
+    public Transform target;
+    public enum AIState { chasing, attack, Leap };
+    protected AIState aiState;
+    protected float dist;
+    public void Start()
     {
-        nm = GetComponent<NavMeshAgent>();
+
+        hh = GetComponent<NavMeshAgent>();
         aiState = AIState.chasing;
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(Think());
@@ -24,31 +24,16 @@ public abstract class szAI : MonoBehaviour
     {
         while (true)
         {
-            if (nm.speed < 30)              //sz Is faster than normal z
-            {
-                nm.speed = 10 + Mathf.Sqrt(Time.time);
-            }
-            float dist = Vector3.Distance(target.position, transform.position);
-            if (dist == 5)
-            {
-                aiState = AIState.lunge;
-            }
-            else if (dist < 2)
-            {
-                aiState = AIState.attack;
-            }
-            else
-            {
-                aiState = AIState.chasing;
-            }
+            playerHealthController = target.GetComponent<Health>();
+            dist = Vector3.Distance(target.position, transform.position);
             switch (aiState)
             {
-
                 case AIState.chasing:
-                    nm.SetDestination(target.position);
+                    hh.SetDestination(target.position);
+                    Chasing();
                     break;
                 case AIState.attack:
-
+                    Attack();
                     break;
                 default:
                     break;
@@ -58,12 +43,11 @@ public abstract class szAI : MonoBehaviour
         }
     }
 
-    //impliment me! Need to make....
-    protected abstract void lunge();
-
-    //impliment me! Need to make....
+    //impliment me!
     protected abstract void Chasing();
 
-    //impliment me! Need to make.....
+    //impliment me!
     protected abstract void Attack();
+
+    protected abstract void Leap();
 }
