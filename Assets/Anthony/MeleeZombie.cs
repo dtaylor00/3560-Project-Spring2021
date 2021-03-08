@@ -17,7 +17,7 @@ public class MeleeZombie:ZombieAI{
         if(dist > 2){
             aiState = AIState.chasing;
         }
-        int damage = -100;
+        int damage = -20;
         playerHealthController.ModifyHealth(damage);
     }
 }
