@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             print("whoops im dead");
-            death();
+            //death();
             return true;
         }
         else
