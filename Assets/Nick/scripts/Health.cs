@@ -31,16 +31,15 @@ public class Health : MonoBehaviour
     }
 
     private void Update(){
-        var keyboard = Keyboard.current;
-        if (keyboard.eKey.wasPressedThisFrame)
+        if (InputSystem.GetDevice<Keyboard>().eKey.wasPressedThisFrame)
             ModifyHealth(-10);
 
         print(currentHealth);
-        isDead()
+        isDead();
     }
 
     private bool isDead(){
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             print("whoops im dead");
             death();
