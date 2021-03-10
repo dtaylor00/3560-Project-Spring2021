@@ -70,7 +70,12 @@ public class Movement_FPS : MonoBehaviour
      */
     [SerializeField]
     [Tooltip("Height the player can jump")]
-    private float jumpHeight = 10f;
+    public float jumpHeight = 10f;
+
+    /// <summary>
+    /// multiplied to the applied speed of the player when the Sprint key is pressed.
+    /// </summary>
+    public float sprintModifier = 1f;
 
     /// <summary>
     /// multiplied to the applied speed of the player when the Sprint key is pressed.

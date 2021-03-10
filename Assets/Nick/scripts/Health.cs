@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
     }
 
     private bool isDead(){
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             print("whoops im dead");
             //death();
