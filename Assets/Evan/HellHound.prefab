@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 5488656114778281386}
   - component: {fileID: 2354426713201032664}
   - component: {fileID: 166578869534135487}
-  - component: {fileID: 9207857260057944381}
   m_Layer: 0
   m_Name: HellHound
   m_TagString: Untagged
@@ -58,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7728797616337821985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.60288095, y: 0.935761, z: -0.06713581}
+  m_LocalPosition: {x: 0, y: 0.935761, z: -0.06713581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7228263741617811538}
@@ -128,16 +127,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9207857260057944381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7728797616337821985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef4f2fc36ed37843a57af1a9a412beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyIfCantSnap: 0
