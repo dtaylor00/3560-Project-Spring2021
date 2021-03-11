@@ -2,15 +2,15 @@
  * File:		 GunEventHandler.cs
  * Author:		 Dakota Taylor
  * Created:		 02 March 2021
- * Modified:	 08 March 2021
- * Desc:		 A class that uses player input and a gun's state to fire related events. Update, Enable, and Disable will need to be called manually in another class.
+ * Modified:	 11 March 2021
+ * Desc:		 A class that uses player input and a gun's state to fire related events. Be sure to set the gun state using SetStateController
  */
 
 using System;
 using System.Collections;
 using UnityEngine;
 
-public class GunEventHandler : IGunEvents {
+public class GunEventHandler : MonoBehaviour, IGunEvents {
     // for detecting input
     protected MasterInput inputController;
 
@@ -30,26 +30,27 @@ public class GunEventHandler : IGunEvents {
     public event Action OnAimStart;
     public event Action OnAimEnd;
 
-    public GunEventHandler(IGunState state) {
+
+    public void SetStateController(IGunState state) {
         this.state = state;
-        inputController = new MasterInput();
     }
 
     public void Awake() {
         inputController = new MasterInput();
+        state ??= GunStateDummy.Instance;
     }
 
-    public void Enable() {
+    public void OnEnable() {
         inputController.Enable();
         AddInput();
     }
 
-    public void Disable() {
+    public void OnDisable() {
         inputController.Disable();
         RemoveInput();
     }
 
-    public void FireEvents() {
+    public void Update() {
         if (state.IsFiring && state.CanFire())
             OnFire?.Invoke();
 

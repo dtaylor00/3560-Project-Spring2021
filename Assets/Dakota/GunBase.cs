@@ -2,7 +2,7 @@
  * File:		 GunBase.cs
  * Author:		 Dakota Taylor
  * Created:		 08 February 2021
- * Modified:	 08 March 2021
+ * Modified:	 11 March 2021
  * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes should add onto the events fired in the GunEventHandler.
  */
 
@@ -24,6 +24,8 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     [SerializeField] protected float maxDistance = 30f;
     [Tooltip("Transform used to spawn the bullet")]
     [SerializeField] protected Transform spawnTransform;
+    [Tooltip("The event handler fires events based on this gun's state and player's input")]
+    [SerializeField] protected GunEventHandler eventHandler;
 
     // various variables need to get and keep track of gun state
     public bool IsFiring { get; private set; }
@@ -33,31 +35,23 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     protected int currentAmmo;
     protected float currentInaccuracy;
 
-    // fires gun events
-    protected GunEventHandler eventHandler;
-
     public void Awake() {
         if (spawnTransform == null)
             spawnTransform = this.GetComponentInChildren<Camera>().transform;
 
+        // eventHandler = new GunEventHandler(this);
+        eventHandler.SetStateController(this);
 
-        eventHandler = new GunEventHandler(this);
         lastFired = -fireRate; // negative fireRate so we can fire as soon as the game starts
         currentInaccuracy = inaccuracy;
         currentAmmo = maxAmmo;
     }
 
-    public void Update() {
-        eventHandler.FireEvents();
-    }
-
     public void OnEnable() {
-        eventHandler.Enable();
         AddEvents();
     }
 
     public void OnDisable() {
-        eventHandler.Disable();
         RemoveEvents();
     }
 
