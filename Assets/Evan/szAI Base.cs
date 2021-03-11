@@ -32,6 +32,9 @@ public abstract class szAI:MonoBehaviour
                     hh.SetDestination(target.position);
                     Chasing();
                     break;
+                case AIState.Leap:
+                    Leap();
+                    break;
                 case AIState.attack:
                     Attack();
                     break;
@@ -43,10 +46,10 @@ public abstract class szAI:MonoBehaviour
         }
     }
 
-    //impliment me!
+    
     protected abstract void Chasing();
 
-    //impliment me!
+    
     protected abstract void Attack();
 
     protected abstract void Leap();

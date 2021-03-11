@@ -11,7 +11,7 @@ public class HellHound:szAI
     {
         if (hh.speed < 15)
         {
-            hh.speed = 10 + Mathf.Sqrt(Time.time);
+            hh.speed = 18;
         }
         if (dist == 5)
         {
@@ -25,7 +25,7 @@ public class HellHound:szAI
     }
     protected override void Leap()
     {
-        leaper = new Vector3.Distance(target.position, transform.position.x + 3, transform.position.y + 6);
+        leaper = new Vector3.Distance(target.position, transform.position.x + 4, transform.position.y + 6);
     }
     protected override void Attack()
     {
