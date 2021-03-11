@@ -9,9 +9,9 @@ public class HellHound:szAI
 
     protected override void Chasing()
     {
-        if (hh.speed < 15)
+        if (hh.speed < 20)
         {
-            hh.speed = 18;
+            hh.speed = 20;
         }
         if (dist == 5)
         {
@@ -33,7 +33,7 @@ public class HellHound:szAI
         {
             aiState = AIState.chasing;
         }
-        int damage = -100;
+        int damage = -75;
         playerHealthController.ModifyHealth(damage);
     }
 }
