@@ -42,6 +42,11 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             print("whoops im dead");
+            if(tag == "Player")
+            {
+                print("player dead.");
+                Destroy(this.gameObject);
+            }
             //death();
             return true;
         }
