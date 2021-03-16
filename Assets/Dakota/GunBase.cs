@@ -26,6 +26,8 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     [SerializeField] protected Transform spawnTransform;
     [Tooltip("The event handler fires events based on this gun's state and player's input")]
     [SerializeField] protected GunEventHandler eventHandler;
+    [Tooltip("particle system that does tracers")]
+    [SerializeField] protected ParticleSystem tracers;
 
     // various variables need to get and keep track of gun state
     public bool IsFiring { get; private set; }
@@ -36,6 +38,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     protected float currentInaccuracy;
 
     public void Awake() {
+
         if (spawnTransform == null)
             spawnTransform = this.GetComponentInChildren<Camera>().transform;
 
@@ -62,6 +65,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     private void Fire() {
+        tracers.Emit(1);
         lastFired = Time.time;
         currentAmmo--;
     }
