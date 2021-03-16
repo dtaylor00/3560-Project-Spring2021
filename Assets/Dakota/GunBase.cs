@@ -65,7 +65,8 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     private void Fire() {
-        tracers.Emit(1);
+        if (tracers != null)
+            tracers.Emit(1);
         lastFired = Time.time;
         currentAmmo--;
     }
