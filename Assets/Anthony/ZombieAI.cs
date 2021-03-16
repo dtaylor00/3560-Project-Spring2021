@@ -8,6 +8,8 @@ public abstract class ZombieAI : MonoBehaviour
     public Health playerHealthController;
     protected NavMeshAgent nm;    
     public Transform target;
+    public float ThinkSleepSeconds = .25f;
+
     public enum AIState {chasing, attack};
     protected AIState aiState;
     protected float dist;
@@ -36,7 +38,7 @@ public abstract class ZombieAI : MonoBehaviour
                     break;
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(ThinkSleepSeconds);
         }
     }
 

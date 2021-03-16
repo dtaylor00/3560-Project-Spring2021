@@ -4,10 +4,12 @@ using UnityEngine;
 
 
 public class MeleeZombie:ZombieAI{
+    public int damageToDeal = -20;
+    public float zombieSpeed = 5;
 
     protected override void Chasing(){
         if(nm.speed < 20){
-            nm.speed = 5+Mathf.Sqrt(Time.time);
+            nm.speed = zombieSpeed + Mathf.Sqrt(Time.time);
         }
         if(dist < 2){
             aiState = AIState.attack;
@@ -17,7 +19,6 @@ public class MeleeZombie:ZombieAI{
         if(dist > 2){
             aiState = AIState.chasing;
         }
-        int damage = -20;
-        playerHealthController.ModifyHealth(damage);
+        playerHealthController.ModifyHealth(damageToDeal);
     }
 }
