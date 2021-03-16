@@ -9,6 +9,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class GunBase : MonoBehaviour, IGunState {
     // Gun parameters, these values mostly should be treated as if they were constants or readonly

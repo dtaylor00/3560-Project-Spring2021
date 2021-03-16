@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[Serializable]
 public class GunEventHandler : MonoBehaviour, IGunEvents {
     // for detecting input
     protected MasterInput inputController;
