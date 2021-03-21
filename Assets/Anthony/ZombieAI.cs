@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public abstract class ZombieAI : MonoBehaviour
 {
+    [Header("Base AI")]
     public Health playerHealthController;
     protected NavMeshAgent nm;    
     public Transform target;
@@ -40,6 +41,11 @@ public abstract class ZombieAI : MonoBehaviour
 
             yield return new WaitForSeconds(ThinkSleepSeconds);
         }
+    }
+
+    protected void changeState(AIState state)
+    {
+        aiState = state;
     }
 
     //impliment me!
