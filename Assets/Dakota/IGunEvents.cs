@@ -2,22 +2,22 @@
  * File:		 IGunEvents.cs
  * Author:		 Dakota Taylor
  * Created:		 02 March 2021
- * Modified:	 08 March 2021
- * Desc:		 An interface that defines gun's events.
+ * Modified:	 22 March 2021
+ * Desc:		 An interface that defines a gun's events.
  */
 
-using System;
+using UnityEngine.Events;
 
 public interface IGunEvents {
-    event Action OnFire;
-    event Action OnFireStart;
-    event Action OnFireEnd;
+    UnityEvent OnFire { get; }
+    UnityEvent OnFireStart { get; }
+    UnityEvent OnFireEnd { get; }
 
-    event Action OnReload;
-    event Action OnReloadStart;
-    event Action OnReloadEnd;
+    UnityEvent OnReload { get; }
+    UnityEvent OnReloadStart { get; }
+    UnityEvent OnReloadEnd { get; }
 
-    event Action OnAim;
-    event Action OnAimStart;
-    event Action OnAimEnd;
+    UnityEvent OnAim { get; }
+    UnityEvent OnAimStart { get; }
+    UnityEvent OnAimEnd { get; }
 }

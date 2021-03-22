@@ -2,14 +2,12 @@
  * File:		 GunBase.cs
  * Author:		 Dakota Taylor
  * Created:		 08 February 2021
- * Modified:	 11 March 2021
- * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes should add onto the events fired in the GunEventHandler.
+ * Modified:	 22 March 2021
+ * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes need to implement the firing mechanic and can add onto the events fired with AddEvents/RemoveEvents.
  */
 
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 public abstract class GunBase : MonoBehaviour, IGunState {
     // Gun parameters, these values mostly should be treated as if they were constants or readonly
@@ -31,19 +29,18 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     [SerializeField] protected ParticleSystem tracers;
 
     // various variables need to get and keep track of gun state
-    public bool IsFiring { get; private set; }
-    public bool IsReloading { get; private set; }
-    public bool IsAiming { get; private set; }
+    public bool IsFiring { get; protected set; }
+    public bool IsReloading { get; protected set; }
+    public bool IsAiming { get; protected set; }
+
     protected float lastFired;
     protected int currentAmmo;
     protected float currentInaccuracy;
 
     public void Awake() {
-
         if (spawnTransform == null)
             spawnTransform = this.GetComponentInChildren<Camera>().transform;
 
-        // eventHandler = new GunEventHandler(this);
         eventHandler.SetStateController(this);
 
         lastFired = -fireRate; // negative fireRate so we can fire as soon as the game starts
@@ -61,13 +58,12 @@ public abstract class GunBase : MonoBehaviour, IGunState {
 
     public virtual bool CanFire() {
         return Time.time - lastFired > fireRate
-            && currentAmmo > 0
-            && !IsReloading;
+                && currentAmmo > 0
+                && !IsReloading;
     }
 
-    private void Fire() {
-        if (tracers != null)
-            tracers.Emit(1);
+    public virtual void Fire() {
+        tracers?.Emit(1);
         lastFired = Time.time;
         currentAmmo--;
     }
@@ -76,11 +72,19 @@ public abstract class GunBase : MonoBehaviour, IGunState {
         return !IsReloading && currentAmmo < maxAmmo;
     }
 
-    private IEnumerator Reload() {
-        IsReloading = true;
+    public virtual void Reload() {
+        if (CanReload()) {
+            IsReloading = true;
+            eventHandler.OnReload?.Invoke();
+            StartCoroutine(ReloadCoroutine());
+        }
+    }
+
+    private IEnumerator ReloadCoroutine() {
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
         IsReloading = false;
+        eventHandler.OnReloadEnd?.Invoke();
     }
 
     public virtual bool CanAim() {
@@ -88,41 +92,37 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     protected virtual void AddEvents() {
-        eventHandler.OnFire += () => Fire();
-        eventHandler.OnFireStart += () => IsFiring = true;
-        eventHandler.OnFireEnd += () => IsFiring = false;
+        eventHandler.OnFire.AddListener(() => Fire());
+        eventHandler.OnFireStart.AddListener(() => IsFiring = true);
+        eventHandler.OnFireEnd.AddListener(() => IsFiring = false);
 
-        eventHandler.OnReloadStart += () => { if (CanReload()) StartCoroutine(Reload()); };
-        // eventHandler.OnReloadEnd += () => IsReloading = false;
+        eventHandler.OnReloadStart.AddListener(() => Reload());
 
-        eventHandler.OnAimStart += () => {
+        eventHandler.OnAimStart.AddListener(() => {
             IsAiming = true;
             currentInaccuracy = inaccuracy / 3.0f;
-        };
-
-
-        eventHandler.OnAimEnd += () => {
+        });
+        eventHandler.OnAimEnd.AddListener(() => {
             IsAiming = false;
             currentInaccuracy = inaccuracy;
-        };
+        });
     }
 
     protected virtual void RemoveEvents() {
-        eventHandler.OnFire -= () => Fire();
-        eventHandler.OnFireStart -= () => IsFiring = true;
-        eventHandler.OnFireEnd -= () => IsFiring = false;
+        eventHandler.OnFire.RemoveListener(() => Fire());
+        eventHandler.OnFireStart.RemoveListener(() => IsFiring = true);
+        eventHandler.OnFireEnd.RemoveListener(() => IsFiring = false);
 
-        eventHandler.OnReloadStart -= () => IsReloading = true;
-        eventHandler.OnReloadEnd -= () => IsReloading = false;
+        eventHandler.OnReloadStart.RemoveListener(() => Reload());
 
-        eventHandler.OnAimStart -= () => {
+        eventHandler.OnAimStart.RemoveListener(() => {
             IsAiming = true;
             currentInaccuracy = inaccuracy / 3.0f;
-        };
-        eventHandler.OnAimEnd -= () => {
+        });
+        eventHandler.OnAimEnd.RemoveListener(() => {
             IsAiming = false;
             currentInaccuracy = inaccuracy;
-        };
+        });
     }
 
     // Creates a directional vector from the cam and modify its end point to a random location up to currentInaccuracy away.
