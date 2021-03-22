@@ -2,7 +2,7 @@
  * File:		 SimpleMachinegun.cs
  * Author:		 Dakota Taylor
  * Created:		 15 February 2021
- * Modified:	 03 March 2021
+ * Modified:	 22 March 2021
  * Desc:		 A simple machinegun using a raycast. Has a high firerate, decent ammo clip, fair bit of inaccuracy, and decent distance.
  */
 
@@ -20,15 +20,16 @@ public class SimpleMachinegun : GunBase {
 
     protected override void AddEvents() {
         base.AddEvents();
-        eventHandler.OnFire += () => Fire();
+        eventHandler.OnFire.AddListener(() => Fire());
     }
 
     protected override void RemoveEvents() {
         base.RemoveEvents();
-        eventHandler.OnFire -= () => Fire();
+        eventHandler.OnFire.RemoveListener(() => Fire());
     }
 
-    private void Fire() {
+    public override void Fire() {
+        base.Fire();
         Ray ray = new Ray(spawnTransform.position, OffsetDirection());
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red, 5);
 

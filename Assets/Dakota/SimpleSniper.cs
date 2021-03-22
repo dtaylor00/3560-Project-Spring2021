@@ -2,7 +2,7 @@
  * File:		 SimpleSniper.cs
  * Author:		 Dakota Taylor
  * Created:		 15 February 2021
- * Modified:	 03 March 2021
+ * Modified:	 22 March 2021
  * Desc:		 A simple sniper using a raycast. Has a low firerate, small ammo clip, very little inaccuracy, and long distance. 
  */
 
@@ -20,15 +20,16 @@ public class SimpleSniper : GunBase {
 
     protected override void AddEvents() {
         base.AddEvents();
-        eventHandler.OnFire += () => Fire();
+        eventHandler.OnFire.AddListener(() => Fire());
     }
 
     protected override void RemoveEvents() {
         base.RemoveEvents();
-        eventHandler.OnFire -= () => Fire();
+        eventHandler.OnFire.RemoveListener(() => Fire());
     }
 
-    private void Fire() {
+    public override void Fire() {
+        base.Fire();
         Ray ray = new Ray(spawnTransform.position, OffsetDirection());
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red, 5);
 

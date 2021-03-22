@@ -2,7 +2,7 @@
  * File:		 SimpleShotgun.cs
  * Author:		 Dakota Taylor
  * Created:		 15 February 2021
- * Modified:	 03 March 2021
+ * Modified:	 22 March 2021
  * Desc:		 A simple shotgun using raycasts. Has a slow firerate, very small ammo clip, a ton of inaccuracy, and small distance, but shoots many pellets at once.
  */
 
@@ -23,15 +23,16 @@ public class SimpleShotgun : GunBase {
 
     protected override void AddEvents() {
         base.AddEvents();
-        eventHandler.OnFire += () => Fire();
+        eventHandler.OnFire.AddListener(() => Fire());
     }
 
     protected override void RemoveEvents() {
         base.RemoveEvents();
-        eventHandler.OnFire -= () => Fire();
+        eventHandler.OnFire.RemoveListener(() => Fire());
     }
 
-    private void Fire() {
+    public override void Fire() {
+        base.Fire();
         Ray[] bullets = new Ray[pelletCount];
         for (int i = 0; i < pelletCount; i++) {
             bullets[i] = new Ray(spawnTransform.position, OffsetDirection(spawnTransform, inaccuracy));

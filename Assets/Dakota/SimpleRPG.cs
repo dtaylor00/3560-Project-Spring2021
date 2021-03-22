@@ -2,7 +2,7 @@
  * File:		 SimpleRPG.cs
  * Author:		 Dakota Taylor
  * Created:		 03 March 2021
- * Modified:	 08 March 2021
+ * Modified:	 22 March 2021
  * Desc:		 A simple RPG using a projectile. Has a slow firerate, very small ammo clip, small amount of inaccuracy, and long distance.
  */
 
@@ -26,15 +26,16 @@ public class SimpleRPG : GunBase {
 
     protected override void AddEvents() {
         base.AddEvents();
-        eventHandler.OnFire += () => Fire();
+        eventHandler.OnFire.AddListener(() => Fire());
     }
 
     protected override void RemoveEvents() {
         base.RemoveEvents();
-        eventHandler.OnFire -= () => Fire();
+        eventHandler.OnFire.RemoveListener(() => Fire());
     }
 
-    private void Fire() {
+    public override void Fire() {
+        base.Fire();
         var offset = OffsetDirection();
         Vector3 pos = spawnTransform.position + offset;
         BulletBase bullet = Instantiate(pfBullet, pos, Quaternion.identity);
