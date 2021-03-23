@@ -2,7 +2,7 @@
  * File:		 GunBase.cs
  * Author:		 Dakota Taylor
  * Created:		 08 February 2021
- * Modified:	 22 March 2021
+ * Modified:	 23 March 2021
  * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes need to implement the firing mechanic and can add onto the events fired with AddEvents/RemoveEvents.
  */
 
@@ -11,16 +11,8 @@ using UnityEngine;
 
 public abstract class GunBase : MonoBehaviour, IGunState {
     // Gun parameters, these values mostly should be treated as if they were constants or readonly
-    [Tooltip("The time (in seconds) before the gun can shoot again")]
-    [SerializeField] protected float fireRate = 0.5f;
-    [Tooltip("The amount of ammo the player can hold")]
-    [SerializeField] protected int maxAmmo = 30;
-    [Tooltip("The time (in seconds) required to reload the gun")]
-    [SerializeField] protected float reloadTime = 2f;
-    [Tooltip("Inaccuracy when firing gun")]
-    [SerializeField] protected float inaccuracy = 0.05f; // The bigger the number, the larger the offset
-    [Tooltip("The maximum distance the bullet flies")]
-    [SerializeField] protected float maxDistance = 30f;
+    [Tooltip("The properties of the gun")]
+    [SerializeField] protected GunProperties properties;
     [Tooltip("Transform used to spawn the bullet")]
     [SerializeField] protected Transform spawnTransform;
     [Tooltip("The event handler fires events based on this gun's state and player's input")]
@@ -43,9 +35,9 @@ public abstract class GunBase : MonoBehaviour, IGunState {
 
         eventHandler.SetStateController(this);
 
-        lastFired = -fireRate; // negative fireRate so we can fire as soon as the game starts
-        currentInaccuracy = inaccuracy;
-        currentAmmo = maxAmmo;
+        lastFired = -properties.fireRate; // negative fireRate so we can fire as soon as the game starts
+        currentInaccuracy = properties.inaccuracy;
+        currentAmmo = properties.maxAmmo;
     }
 
     public void OnEnable() {
@@ -57,7 +49,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     public virtual bool CanFire() {
-        return Time.time - lastFired > fireRate
+        return Time.time - lastFired > properties.fireRate
                 && currentAmmo > 0
                 && !IsReloading;
     }
@@ -65,11 +57,10 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     public virtual void Fire() {
         tracers?.Emit(1);
         lastFired = Time.time;
-        currentAmmo--;
     }
 
     public virtual bool CanReload() {
-        return !IsReloading && currentAmmo < maxAmmo;
+        return !IsReloading && currentAmmo < properties.maxAmmo;
     }
 
     public virtual void Reload() {
@@ -81,8 +72,8 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     private IEnumerator ReloadCoroutine() {
-        yield return new WaitForSeconds(reloadTime);
-        currentAmmo = maxAmmo;
+        yield return new WaitForSeconds(properties.reloadTime);
+        currentAmmo = properties.maxAmmo;
         IsReloading = false;
         eventHandler.OnReloadEnd?.Invoke();
     }
@@ -100,11 +91,11 @@ public abstract class GunBase : MonoBehaviour, IGunState {
 
         eventHandler.OnAimStart.AddListener(() => {
             IsAiming = true;
-            currentInaccuracy = inaccuracy / 3.0f;
+            currentInaccuracy = properties.inaccuracy / 3.0f;
         });
         eventHandler.OnAimEnd.AddListener(() => {
             IsAiming = false;
-            currentInaccuracy = inaccuracy;
+            currentInaccuracy = properties.inaccuracy;
         });
     }
 
@@ -117,11 +108,11 @@ public abstract class GunBase : MonoBehaviour, IGunState {
 
         eventHandler.OnAimStart.RemoveListener(() => {
             IsAiming = true;
-            currentInaccuracy = inaccuracy / 3.0f;
+            currentInaccuracy = properties.inaccuracy / 3.0f;
         });
         eventHandler.OnAimEnd.RemoveListener(() => {
             IsAiming = false;
-            currentInaccuracy = inaccuracy;
+            currentInaccuracy = properties.inaccuracy;
         });
     }
 

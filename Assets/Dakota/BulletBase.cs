@@ -2,7 +2,7 @@
  * File:		 BulletBase.cs
  * Author:		 Dakota Taylor
  * Created:		 10 February 2021
- * Modified:	 22 March 2021
+ * Modified:	 23 March 2021
  * Desc:		 A script for managing a bullet gameobject. Uses the Unity physics system, so the gameobject must have a rigidbody and collider.
  */
 
@@ -18,9 +18,7 @@ public class BulletBase : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag != "Bullet") {
-            Debug.Log("collision from bullet! tag = " + collision.gameObject.tag);
-            Destroy(gameObject);
-        }
+        Debug.Log("collision from bullet! tag = " + collision.gameObject.tag);
+        Destroy(gameObject);
     }
 }
