@@ -28,6 +28,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     protected float lastFired;
     protected int currentAmmo;
     protected float currentInaccuracy;
+    protected int currentShots;
 
     public void Awake() {
         if (spawnTransform == null)
@@ -38,6 +39,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
         lastFired = -properties.fireRate; // negative fireRate so we can fire as soon as the game starts
         currentInaccuracy = properties.inaccuracy;
         currentAmmo = properties.maxAmmo;
+        currentShots = properties.shotsPerTrigger;
     }
 
     public void OnEnable() {

@@ -30,9 +30,14 @@ public class GunProperties : ScriptableObject {
     public int ammoPerShot = 1;
     [Tooltip("How many bullets flies per ammo used. Total bullets fired = ammo spent * bulletsPerAmmo (rounds down for fractional numbers)")]
     public float bulletsPerAmmo = 1;
+    [Tooltip("How many times the gun fires per trigger")]
+    public int shotsPerTrigger = 1;
+    [Tooltip("The time (in seconds) between shots for shotsPerTrigger")]
+    public float shotRate = 0;
 
     public enum GunType {
         Raycast = 0,
-        Projectile = 1
+        Projectile = 1,
+        Burst = 2
     }
 }
