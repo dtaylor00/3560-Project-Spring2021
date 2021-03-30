@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class ZombieAI : MonoBehaviour
+public abstract class szAI:MonoBehaviour
 {
-    [Header("Base AI")]
-    protected NavMeshAgent nm;    
+    public Health playerHealthController;
+    protected NavMeshAgent hh;
     public Transform target;
-    public float ThinkSleepSeconds = .25f;
-
-    public enum AIState {chasing = 0, attack = 1};
+    public enum AIState { chasing, attack, Leap };
     protected AIState aiState;
     protected float dist;
     public void Start()
     {
-        
-        nm = GetComponent<NavMeshAgent>(); 
+
+        hh = GetComponent<NavMeshAgent>();
         aiState = AIState.chasing;
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(Think());
     }
 
-    protected virtual IEnumerator Think(){
-        
-        while(true){
-            print("think is running");
+    protected IEnumerator Think()
+    {
+        while (true)
+        {
+            playerHealthController = target.GetComponent<Health>();
             dist = Vector3.Distance(target.position, transform.position);
-            switch(aiState){
+            switch (aiState)
+            {
                 case AIState.chasing:
-                    nm.SetDestination(target.position);
+                    hh.SetDestination(target.position);
                     Chasing();
+                    break;
+                case AIState.Leap:
+                    Leap();
                     break;
                 case AIState.attack:
                     Attack();
@@ -39,19 +42,15 @@ public abstract class ZombieAI : MonoBehaviour
                     break;
             }
 
-            yield return new WaitForSeconds(ThinkSleepSeconds);
+            yield return new WaitForSeconds(1f);
         }
     }
 
-    protected void changeState(AIState state)
-    {
-        aiState = state;
-    }
-
-    //impliment me!
+    
     protected abstract void Chasing();
 
-    //impliment me!
+    
     protected abstract void Attack();
-}
 
+    protected abstract void Leap();
+}

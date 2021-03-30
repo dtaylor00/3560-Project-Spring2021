@@ -122,10 +122,15 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a59db6f0b26243f4fa2b0c699a8dd6ae, type: 2}
 --- !u!1 &237775881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7449159818482987997, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
+  m_PrefabInstance: {fileID: 1245368239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &237775882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7449159818482987970, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
   m_PrefabInstance: {fileID: 1245368239}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &237775883
@@ -387,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Person
       objectReference: {fileID: 0}
+    - target: {fileID: 7449159818482987997, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
 --- !u!1 &1402004024
@@ -402,6 +411,8 @@ GameObject:
   - component: {fileID: 1402004027}
   - component: {fileID: 1402004026}
   - component: {fileID: 1402004025}
+  - component: {fileID: 1402004030}
+  - component: {fileID: 1402004031}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -502,6 +513,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402004030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402004024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb949db6ec49ae4abfe4ae652a34991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 237775882}
+  ThinkSleepSeconds: 0.25
+  damageToDeal: -20
+  zombieSpeed: 5
+  radius: 0.5
+  hitDist: 0.5
+  attackTime: 1
+  aiState: 0
+  jumpHeight: 5
+--- !u!195 &1402004031
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402004024}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5000001
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1812761502
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +718,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &2053807694
 BoxCollider:
@@ -1050,7 +1104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903895513997854687, guid: fabd2c7cfe7417c46ada87333a6cc48b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.54999995
+      value: -0.112
       objectReference: {fileID: 0}
     - target: {fileID: 7903895513997854687, guid: fabd2c7cfe7417c46ada87333a6cc48b, type: 3}
       propertyPath: m_LocalRotation.w
