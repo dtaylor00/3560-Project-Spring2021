@@ -15,7 +15,6 @@ public abstract class ZombieAI : MonoBehaviour
     protected float dist;
     public void Start()
     {
-        
         nm = GetComponent<NavMeshAgent>(); 
         aiState = AIState.chasing;
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,6 +31,8 @@ public abstract class ZombieAI : MonoBehaviour
                     Chasing();
                     break;
                 case AIState.attack:
+                    yield return new WaitForSeconds(4*ThinkSleepSeconds);
+                    nm.SetDestination(target.position);
                     Attack();
                     break;
                 default:
