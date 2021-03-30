@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 371295694}
   - component: {fileID: 371295693}
   - component: {fileID: 371295692}
-  - component: {fileID: 371295691}
   - component: {fileID: 371295697}
+  - component: {fileID: 371295691}
   m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -154,17 +154,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 371295690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e3ee9ed601e0f459b72029514baf99, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fb949db6ec49ae4abfe4ae652a34991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthController: {fileID: 0}
   target: {fileID: 0}
   ThinkSleepSeconds: 0.25
   damageToDeal: -20
   zombieSpeed: 5
-  radius: 0.5
-  hitDist: 0.5
-  attackTime: 2
+  radius: 0
+  hitDist: 0
+  attackTime: 0
+  aiState: 0
+  jumpHeight: 0
+  jumpTime: 1
+  jumpSpeed: 10
+  jumpCooldownTime: 1
 --- !u!195 &371295692
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -258,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371295690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.33, y: -0.82, z: -13.62}
+  m_LocalPosition: {x: 0, y: 0.227, z: -13.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -311,8 +315,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141557190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.754987, y: 4.5566335, z: 15.130816}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 1302883866}
   m_RootOrder: 0
@@ -415,7 +419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302883865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.060692, y: -8.106964, z: -19.380035}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1141557191}
@@ -440,23 +444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
---- !u!114 &1391526118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391526108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75df29d202faa5f4c84b28e4c5bd80de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 0.05
-  maxAmmo: 60
-  reloadTime: 2
-  inaccuracy: 0.05
-  maxDistance: 60
 --- !u!1 &1745868311
 GameObject:
   m_ObjectHideFlags: 0

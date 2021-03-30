@@ -77,11 +77,6 @@ public class Movement_FPS : MonoBehaviour
     /// </summary>
     public float sprintModifier = 1f;
 
-    /// <summary>
-    /// multiplied to the applied speed of the player when the Sprint key is pressed.
-    /// </summary>
-    public float sprintModifier = 1f;
-
     /*
      * @name: airControl
      * @desc: the amount of control the player has in the air. 0 is mone, 1 is full control.
@@ -314,7 +309,6 @@ public class Movement_FPS : MonoBehaviour
             Vector3 transformForce = transform.forward * movementForce.y + transform.right * movementForce.x;
             transformForce = new Vector3(transformForce.normalized.x * curveFloat * sMod, transformForce.y, transformForce.normalized.z * curveFloat * sMod);
             transformForce.y = transform.GetComponent<Rigidbody>().velocity.y;
-            print(sMod);
             transform.GetComponent<Rigidbody>().velocity = transformForce;
 
 

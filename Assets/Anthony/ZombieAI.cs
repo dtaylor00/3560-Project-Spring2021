@@ -6,12 +6,11 @@ using UnityEngine.AI;
 public abstract class ZombieAI : MonoBehaviour
 {
     [Header("Base AI")]
-    public Health playerHealthController;
     protected NavMeshAgent nm;    
     public Transform target;
     public float ThinkSleepSeconds = .25f;
 
-    public enum AIState {chasing, attack};
+    public enum AIState {chasing = 0, attack = 1};
     protected AIState aiState;
     protected float dist;
     public void Start()
@@ -23,9 +22,10 @@ public abstract class ZombieAI : MonoBehaviour
         StartCoroutine(Think());
     }
 
-    protected IEnumerator Think(){
+    protected virtual IEnumerator Think(){
+        
         while(true){
-            playerHealthController = target.GetComponent<Health>(); 
+            print("think is running");
             dist = Vector3.Distance(target.position, transform.position);
             switch(aiState){
                 case AIState.chasing:
