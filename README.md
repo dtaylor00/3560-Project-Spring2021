@@ -27,14 +27,14 @@ Unity has an inbuilt quick compiler so it is possible to open up the source file
 ## Minimum Viable Product
  - [x] At least one gun
  - [x] FPS player controller
- - [ ] Enemy zombie AI
- - [ ] Second enemy AI 
+ - [x] Enemy zombie AI
+ - [x] Second enemy AI 
  - [ ] Upgrade system
  - [ ] Level design
  - [x] Health system
 
 ## Final Deliverable Product / Stretch Goals
- - [ ] More weapons
+ - [x] More weapons
  - [ ] Roguelite random stats
  - [ ] Many zombies
  - [ ] Multiple level
