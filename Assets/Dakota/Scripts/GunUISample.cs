@@ -2,7 +2,7 @@
  * File:		 GunUISample.cs
  * Author:		 Dakota Taylor
  * Created:		 11 March 2021
- * Modified:	 11 March 2021
+ * Modified:	 22 March 2021
  * Desc:		 A sample of a Gun UI that display a crosshair and 3d gun model in from of the camera.
  */
 
@@ -24,11 +24,11 @@ public class GunUISample : MonoBehaviour {
     [SerializeField] protected GunEventHandler gunEventHandler;
 
     void OnEnable() {
-        gunEventHandler.OnFire += () => muzzleFlash.Play();
+        gunEventHandler.OnFire.AddListener(() => muzzleFlash.Play());
     }
 
     void OnDisable() {
-        gunEventHandler.OnFire -= () => muzzleFlash.Play();
+        gunEventHandler.OnFire.RemoveListener(() => muzzleFlash.Play());
     }
 
     void Start() {
