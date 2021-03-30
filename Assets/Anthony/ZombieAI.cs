@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 public abstract class ZombieAI : MonoBehaviour
 {
-    NavMeshAgent nm;    
+    public Health playerHealthController;
+    protected NavMeshAgent nm;    
     public Transform target;
+    public float ThinkSleepSeconds = .25f;
+
     public enum AIState {chasing, attack};
     protected AIState aiState;
-    public float speed;
-    //public AIState aiState;
-    // Start is called before the first frame update
-
-    protected void Start()
+    protected float dist;
+    public void Start()
     {
         
         nm = GetComponent<NavMeshAgent>(); 
@@ -23,29 +24,21 @@ public abstract class ZombieAI : MonoBehaviour
 
     protected IEnumerator Think(){
         while(true){
-            if(nm.speed < 20){
-                nm.speed = 5+Mathf.Sqrt(Time.time);
-            }
-            float dist = Vector3.Distance(target.position, transform.position);
-            if(dist < 2){
-                aiState = AIState.attack;
-            }
-            else{
-                aiState = AIState.chasing;
-            }
+            playerHealthController = target.GetComponent<Health>(); 
+            dist = Vector3.Distance(target.position, transform.position);
             switch(aiState){
-
                 case AIState.chasing:
                     nm.SetDestination(target.position);
+                    Chasing();
                     break;
                 case AIState.attack:
-
+                    Attack();
                     break;
                 default:
                     break;
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(ThinkSleepSeconds);
         }
     }
 
@@ -55,3 +48,4 @@ public abstract class ZombieAI : MonoBehaviour
     //impliment me!
     protected abstract void Attack();
 }
+
