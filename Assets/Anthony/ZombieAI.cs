@@ -24,7 +24,6 @@ public abstract class ZombieAI : MonoBehaviour
     protected virtual IEnumerator Think(){
         
         while(true){
-            print("think is running");
             dist = Vector3.Distance(target.position, transform.position);
             switch(aiState){
                 case AIState.chasing:

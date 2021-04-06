@@ -74,10 +74,12 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     private IEnumerator ReloadCoroutine() {
+        print("reloading");
         yield return new WaitForSeconds(properties.reloadTime);
         currentAmmo = properties.maxAmmo;
         IsReloading = false;
         eventHandler.OnReloadEnd?.Invoke();
+        print("reload done");
     }
 
     public virtual bool CanAim() {
