@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 public abstract class ZombieAI : MonoBehaviour
 {
-    NavMeshAgent nm;    
+    [Header("Base AI")]
+    protected NavMeshAgent nm;    
     public Transform target;
-    public enum AIState {chasing, attack};
-    protected AIState aiState;
-    public float speed;
-    //public AIState aiState;
-    // Start is called before the first frame update
+    public float ThinkSleepSeconds = .25f;
 
-    protected void Start()
+    public enum AIState {chasing = 0, attack = 1};
+    protected AIState aiState;
+    protected float dist;
+    public void Start()
     {
         
         nm = GetComponent<NavMeshAgent>(); 
@@ -21,32 +22,30 @@ public abstract class ZombieAI : MonoBehaviour
         StartCoroutine(Think());
     }
 
-    protected IEnumerator Think(){
+    protected virtual IEnumerator Think(){
+        
         while(true){
-            if(nm.speed < 20){
-                nm.speed = 5+Mathf.Sqrt(Time.time);
-            }
-            float dist = Vector3.Distance(target.position, transform.position);
-            if(dist < 2){
-                aiState = AIState.attack;
-            }
-            else{
-                aiState = AIState.chasing;
-            }
+            print("think is running");
+            dist = Vector3.Distance(target.position, transform.position);
             switch(aiState){
-
                 case AIState.chasing:
                     nm.SetDestination(target.position);
+                    Chasing();
                     break;
                 case AIState.attack:
-
+                    Attack();
                     break;
                 default:
                     break;
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(ThinkSleepSeconds);
         }
+    }
+
+    protected void changeState(AIState state)
+    {
+        aiState = state;
     }
 
     //impliment me!
@@ -55,3 +54,4 @@ public abstract class ZombieAI : MonoBehaviour
     //impliment me!
     protected abstract void Attack();
 }
+

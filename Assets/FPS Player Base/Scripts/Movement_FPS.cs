@@ -309,7 +309,6 @@ public class Movement_FPS : MonoBehaviour
             Vector3 transformForce = transform.forward * movementForce.y + transform.right * movementForce.x;
             transformForce = new Vector3(transformForce.normalized.x * curveFloat * sMod, transformForce.y, transformForce.normalized.z * curveFloat * sMod);
             transformForce.y = transform.GetComponent<Rigidbody>().velocity.y;
-            print(sMod);
             transform.GetComponent<Rigidbody>().velocity = transformForce;
 
 
