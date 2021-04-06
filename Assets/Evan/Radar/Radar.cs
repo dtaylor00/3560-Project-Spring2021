@@ -14,10 +14,15 @@ public class Radar : MonoBehaviour
     List<GameObject> borderObjects;
     public float switchDistance;
     public Transform helpTransform;
+    public bool loadZombies;
 
     // Start is called before the first frame update
     void Start(){
         createRadarObjects();
+        if (loadZombies)
+        {
+            trackedObjects = GameObject.FindGameObjectsWithTag("Zombie");
+        }
     }
 
     void Update(){

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Capsule
   - Bullet
+  - Zombie
   layers:
   - Default
   - TransparentFX
