@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MeleeZombie:ZombieAI{
+public class MeleeZombie : ZombieAI
+{
     [Header("Melee Zombie")]
     public int damageToDeal = -20;
     public float zombieSpeed = 5;
     public float radius;
     public float hitDist;
-    protected float attackTimer = 0; 
+    protected float attackTimer = 0;
     public float attackTime;
 
-    protected override void Chasing(){
-        if(nm.speed < 20){
+    protected override void Chasing()
+    {
+        if (nm.speed < 20)
+        {
             nm.speed = zombieSpeed + Mathf.Sqrt(Time.time);
         }
-        if(Mathf.Abs(dist) < 2){
+        if (Mathf.Abs(dist) < 2)
+        {
             changeState(AIState.attack);
         }
     }
-    protected override void Attack(){
-        if(Mathf.Abs(dist) > 2){
+    protected override void Attack()
+    {
+        if (Mathf.Abs(dist) > 2)
+        {
             changeState(AIState.chasing);
         }
         RaycastHit hit;
