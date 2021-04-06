@@ -21,15 +21,15 @@ public class Radar : MonoBehaviour
     }
 
     void Update(){
-        for(int i = 0; i <= radarObjects.Count; i++){
+        for(int i = 0; i < radarObjects.Count; i++){
             if(Vector3.Distance(radarObjects[i].transform.position, transform.position) > switchDistance){
                 helpTransform.LookAt(radarObjects[i].transform);
                 borderObjects[i].transform.position = transform.position + switchDistance * helpTransform.forward;
-                //borderObjects[i].layer = LayerMask.NameToLayer("Radar");
-                //radarObjects[i].layer = LayerMask.NameToLayer("Invisible");
+                borderObjects[i].layer = LayerMask.NameToLayer("Radar");
+                radarObjects[i].layer = LayerMask.NameToLayer("Invisible");
             }else{
-                //borderObjects[i].layer = LayerMask.NameToLayer("Invisible");
-                //borderObjects[i].layer = LayerMask.NameToLayer("Rader");
+                borderObjects[i].layer = LayerMask.NameToLayer("Invisible");
+                radarObjects[i].layer = LayerMask.NameToLayer("Rader");
             }
         }
     }
