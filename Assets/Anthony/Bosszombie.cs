@@ -25,6 +25,7 @@ public class Bosszombie:ZombieAI
         Vector3 left = transform.position;
         left.y += 3;
         GameObject fireball = Instantiate(fireballcollider,left,transform.rotation) as GameObject;
+        fireball.layer = 7;
         Rigidbody rb = fireball.GetComponent<Rigidbody>();
         rb.velocity = transform.forward * 20f;
         fireball.transform.parent=null;
