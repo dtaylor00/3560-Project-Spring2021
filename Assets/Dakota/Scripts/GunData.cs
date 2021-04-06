@@ -1,15 +1,22 @@
 /*
- * File:		 GunProperties.cs
+ * File:		 GunData.cs
  * Author:		 Dakota Taylor
- * Created:		 20 March 2021
- * Modified:	 23 March 2021
- * Desc:		 A scriptable object that contains the properties of a gun.
+ * Created:		 05 April 2021
+ * Modified:	 06 April 2021
+ * Desc:		 A scriptable object that contains the data of a gun, including its properties and model.
  */
 
+using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Gun Properties", menuName = "ScriptableObjects/Gun Properties")]
-public class GunProperties : ScriptableObject {
+[CreateAssetMenu(fileName = "New Gun Data", menuName = "ScriptableObjects/Gun Data")]
+public class GunData : ScriptableObject {
+    [SerializeField] public GunProperties properties;
+    [SerializeField] public GunViewModel viewModel;
+}
+
+[Serializable]
+public class GunProperties {
     [Tooltip("The firing type of the gun")]
     public GunType type = GunType.Raycast;
     [Tooltip("How much damage each bullet does")]
@@ -40,4 +47,18 @@ public class GunProperties : ScriptableObject {
         Projectile = 1,
         Burst = 2
     }
+}
+
+[Serializable]
+public class GunViewModel {
+    [Tooltip("Model")]
+    public GameObject gunModel;
+    [Tooltip("Animation")]
+    public RuntimeAnimatorController animatorController;
+    [Tooltip("Offset")]
+    public Vector3 gunOffset = Vector3.zero;
+    [Tooltip("Rotation")]
+    public Quaternion gunRotation = Quaternion.identity;
+    [Tooltip("Crosshair")]
+    public Sprite crosshair;
 }

@@ -2,9 +2,11 @@
  * File:		 IGunState.cs
  * Author:		 Dakota Taylor
  * Created:		 03 March 2021
- * Modified:	 11 March 2021
+ * Modified:	 06 April 2021
  * Desc:		 An interface that defines a gun's state.
  */
+
+using System;
 
 public interface IGunState {
     bool IsFiring { get; }
@@ -14,6 +16,9 @@ public interface IGunState {
     bool CanFire();
     bool CanReload();
     bool CanAim();
+    bool CanSwitch();
+
+    event Action<IGunState> OnStateChanged;
 }
 
 public class GunStateDummy : IGunState {
@@ -27,4 +32,6 @@ public class GunStateDummy : IGunState {
     public bool CanAim() => false;
     public bool CanFire() => false;
     public bool CanReload() => false;
+    public bool CanSwitch() => false;
+    public event Action<IGunState> OnStateChanged = delegate { };
 }
