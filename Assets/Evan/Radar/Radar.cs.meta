@@ -3,7 +3,9 @@ guid: 67a85d1767adf1d4c80bad98dc102c20
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - radarPrefab: {instanceID: 0}
+  - helpTransform: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
