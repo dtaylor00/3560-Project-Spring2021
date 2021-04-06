@@ -22,9 +22,9 @@ public class RaycastGun : GunBase {
 
             Physics.Raycast(bullet, out RaycastHit rayhit, Properties.maxDistance);
             if (rayhit.collider != null) {
-                Debug.Log("raycast hit!");
+                var healthScript = rayhit.collider.gameObject.GetComponent<Health>();
+                healthScript?.ModifyHealth((int)Properties.damage);
             }
         }
     }
-
 }
