@@ -2,7 +2,7 @@
  * File:		 GunEventHandler.cs
  * Author:		 Dakota Taylor
  * Created:		 02 March 2021
- * Modified:	 06 April 2021
+ * Modified:	 22 March 2021
  * Desc:		 A class that uses player input and a gun's state to fire related events. Be sure to set the gun state using SetStateController.
  */
 
@@ -82,8 +82,8 @@ public class GunEventHandler : MonoBehaviour, IGunEvents {
         inputController.Player.Fire.performed -= _ => OnFireStart?.Invoke();
         inputController.Player.Fire.canceled -= _ => OnFireEnd?.Invoke();
 
-        inputController.Player.Reload.performed -= _ => OnReloadStart?.Invoke();
-        // inputController.Player.Reload.canceled -= _ => OnReloadEnd?.Invoke();
+        inputController.Player.Reload.performed += _ => OnReloadStart?.Invoke();
+        // inputController.Player.Reload.canceled += _ => OnReloadEnd?.Invoke();
 
         inputController.Player.Aim.performed -= _ => OnAimStart?.Invoke();
         inputController.Player.Aim.canceled -= _ => OnAimEnd?.Invoke();

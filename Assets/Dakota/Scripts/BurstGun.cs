@@ -2,7 +2,7 @@
  * File:		 BurstGun.cs
  * Author:		 Dakota Taylor
  * Created:		 23 March 2021
- * Modified:	 06 April 2021
+ * Modified:	 23 March 2021
  * Desc:		 An extension to the raycast gun that specifically handles guns that shoots multiple times per trigger.
  */
 
@@ -27,20 +27,16 @@ public class BurstGun : RaycastGun {
 
     public virtual IEnumerator FireCouroutine() {
         currentShots--;
-        isBursting = currentShots > 0 && CurrentAmmo > 0;
+        isBursting = currentShots > 0 && currentAmmo > 0;
         if (isBursting) {
-            yield return new WaitForSeconds(Properties.shotRate);
+            yield return new WaitForSeconds(properties.shotRate);
             eventHandler.OnFire?.Invoke();
         } else {
-            currentShots = Properties.shotsPerTrigger;
+            currentShots = properties.shotsPerTrigger;
         }
     }
 
     public override bool CanReload() {
         return base.CanReload() && !isBursting;
-    }
-
-    public override bool CanSwitch() {
-        return base.CanSwitch() && !isBursting;
     }
 }
