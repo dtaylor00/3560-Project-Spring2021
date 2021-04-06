@@ -25,8 +25,11 @@ public class Radar : MonoBehaviour
             if(Vector3.Distance(radarObjects[i].transform.position, transform.position) > switchDistance){
                 helpTransform.LookAt(radarObjects[i].transform);
                 borderObjects[i].transform.position = transform.position + switchDistance * helpTransform.forward;
+                borderObjects[i].layer = LayerMask.NameToLayer("Radar");
+                radarObjects[i].layer = LayerMask.NameToLayer("Invisible");
             }else{
-
+                borderObjects[i].layer = LayerMask.NameToLayer("Invisible");
+                borderObjects[i].layer = LayerMask.NameToLayer("Rader");
             }
         }
     }
