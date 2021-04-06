@@ -1299,6 +1299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Person
       objectReference: {fileID: 0}
+    - target: {fileID: 7449159818482987997, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac2d7572c71be246a5365f1101aea45, type: 3}
 --- !u!1 &1402004024
@@ -1688,7 +1692,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2030766001
 Transform:
@@ -2044,7 +2048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903895513997854687, guid: fabd2c7cfe7417c46ada87333a6cc48b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.54999995
+      value: -0.112
       objectReference: {fileID: 0}
     - target: {fileID: 7903895513997854687, guid: fabd2c7cfe7417c46ada87333a6cc48b, type: 3}
       propertyPath: m_LocalRotation.w
