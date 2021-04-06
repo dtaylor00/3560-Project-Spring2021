@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 using System.Security.Permissions;
 using UnityEngine;
 
@@ -11,6 +13,7 @@ public class Radar : MonoBehaviour
     public GameObject radarPrefab;
     List<GameObject> borderObjects;
     public float switchDistance;
+    public Transform helpTransform;
 
     // Start is called before the first frame update
     void Start(){
@@ -19,13 +22,19 @@ public class Radar : MonoBehaviour
 
     void Update(){
         for(int i = 0; i < radarObjects.Count; i++){
+            if(Vector3.Distance(radarObjects[i].transform.position, transform.position) > switchDistance){
+                helpTransform.LookAt(radarObjects[i].transform);
+                borderObjects[i].transform.position = transform.position + switchDistance * helpTransform.forward;
+            }else{
 
+            }
         }
     }
     // Update is called once per frame
     void createRadarObjects(){
 
         radarObjects = new List<GameObject>();
+        borderObjects = new List<GameObject>();
         foreach (GameObject o in trackedObjects){
             GameObject k = Instantiate(radarPrefab, o.transform.position, Quaternion.identity) as GameObject;
             radarObjects.Add(k);
