@@ -11,8 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nat/LevelProto.unity
     guid: de46af675f00c984ba323b5e0cbb01c1
-  - enabled: 1
-    path: Assets/Anthony/MainMenu.unity
-    guid: a514948355701f74eaf75072bfa2380f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bc2577911cdec8544875fa5f694abdad, type: 2}

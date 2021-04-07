@@ -2,57 +2,106 @@
  * File:		 GunBase.cs
  * Author:		 Dakota Taylor
  * Created:		 08 February 2021
- * Modified:	 23 March 2021
+ * Modified:	 06 April 2021
  * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes need to implement the firing mechanic and can add onto the events fired with AddEvents/RemoveEvents.
  */
 
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System.Linq;
 
 public abstract class GunBase : MonoBehaviour, IGunState {
     // Gun parameters, these values mostly should be treated as if they were constants or readonly
     [Tooltip("The properties of the gun")]
-    [SerializeField] protected GunProperties properties;
+    [SerializeField] protected GunData gunData;
     [Tooltip("Transform used to spawn the bullet")]
     [SerializeField] protected Transform spawnTransform;
-    [Tooltip("The event handler fires events based on this gun's state and player's input")]
-    [SerializeField] protected GunEventHandler eventHandler;
     [Tooltip("particle system that does tracers")]
     [SerializeField] protected ParticleSystem tracers;
 
+    protected IGunEvents eventHandler;
+    protected Dictionary<UnityEvent, UnityAction> eventMap = new Dictionary<UnityEvent, UnityAction>();
+
+    public GunViewModel ViewModel => gunData.viewModel;
+    public GunProperties Properties => gunData.properties;
+
     // various variables need to get and keep track of gun state
-    public bool IsFiring { get; protected set; }
-    public bool IsReloading { get; protected set; }
-    public bool IsAiming { get; protected set; }
+    public event Action<IGunState> OnStateChanged = delegate { };
+
+    private bool _isFiring, _isReloading, _isAiming;
+    public bool IsFiring {
+        get => _isFiring; protected set {
+            _isFiring = value;
+            OnStateChanged?.Invoke(this);
+        }
+    }
+    public bool IsReloading {
+        get => _isReloading; protected set {
+            _isReloading = value;
+            OnStateChanged?.Invoke(this);
+        }
+    }
+    public bool IsAiming {
+        get => _isAiming; protected set {
+            _isAiming = value;
+            OnStateChanged?.Invoke(this);
+        }
+    }
+
+    private int _currentAmmo;
+    public int CurrentAmmo { // NOTE: might move currentAmmo into IGunState
+        get => _currentAmmo; protected set {
+            if (value <= 0) IsFiring = false;
+            _currentAmmo = value;
+        }
+    }
 
     protected float lastFired;
-    protected int currentAmmo;
     protected float currentInaccuracy;
     protected int currentShots;
 
+    // Must do three things in addition to changing the event handler:
+    // Remove event listeners from the current event handler
+    // Clear the current event mapping and create a new event mapping
+    // Add those new event listenrs to the new event handler
+    public void SetEventHandler(IGunEvents eventHandler) {
+        if (this.eventHandler == eventHandler) return;
+
+        bool activeState = gameObject.activeSelf; // Keeps the current state to retract to later
+        gameObject.SetActive(false);              // Might not even be necessary but just to be safe
+        eventMap.Clear();
+        this.eventHandler = eventHandler;
+        CreateEventMap();
+        gameObject.SetActive(activeState);
+    }
+
     public void Awake() {
-        if (spawnTransform == null)
-            spawnTransform = this.GetComponentInChildren<Camera>().transform;
+        spawnTransform ??= this.GetComponentInChildren<Camera>().transform;
+        SetEventHandler(eventHandler ?? GunEventsDummy.Instance);
 
-        eventHandler.SetStateController(this);
-
-        lastFired = -properties.fireRate; // negative fireRate so we can fire as soon as the game starts
-        currentInaccuracy = properties.inaccuracy;
-        currentAmmo = properties.maxAmmo;
-        currentShots = properties.shotsPerTrigger;
+        lastFired = -Properties.fireRate; // negative fireRate so we can fire as soon as the game starts
+        currentInaccuracy = Properties.inaccuracy;
+        CurrentAmmo = Properties.maxAmmo;
+        currentShots = Properties.shotsPerTrigger;
     }
 
     public void OnEnable() {
-        AddEvents();
+        AddEventListeners();
     }
 
     public void OnDisable() {
-        RemoveEvents();
+        RemoveEventListeners();
+        IsAiming = false;
+        IsReloading = false;
+        IsFiring = false;
     }
 
     public virtual bool CanFire() {
-        return Time.time - lastFired > properties.fireRate
-                && currentAmmo > 0
+        return Time.time - lastFired > Properties.fireRate
+                && CurrentAmmo > 0
                 && !IsReloading;
     }
 
@@ -62,7 +111,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     public virtual bool CanReload() {
-        return !IsReloading && currentAmmo < properties.maxAmmo;
+        return !IsReloading && CurrentAmmo < Properties.maxAmmo;
     }
 
     public virtual void Reload() {
@@ -74,50 +123,57 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     private IEnumerator ReloadCoroutine() {
-        print("reloading");
-        yield return new WaitForSeconds(properties.reloadTime);
-        currentAmmo = properties.maxAmmo;
+        yield return new WaitForSeconds(Properties.reloadTime);
+        CurrentAmmo = Properties.maxAmmo;
         IsReloading = false;
         eventHandler.OnReloadEnd?.Invoke();
-        print("reload done");
     }
 
     public virtual bool CanAim() {
         return true;
     }
 
-    protected virtual void AddEvents() {
-        eventHandler.OnFire.AddListener(() => Fire());
-        eventHandler.OnFireStart.AddListener(() => IsFiring = true);
-        eventHandler.OnFireEnd.AddListener(() => IsFiring = false);
+    public virtual bool CanSwitch() {
+        return !IsReloading && !IsAiming;
+    }
 
-        eventHandler.OnReloadStart.AddListener(() => Reload());
+    protected virtual void AddAction(UnityEvent evt, UnityAction act) {
+        if (!eventMap.ContainsKey(evt)) eventMap.Add(evt, act);
+        else eventMap[evt] += act;
+    }
 
-        eventHandler.OnAimStart.AddListener(() => {
+    protected virtual void CreateEventMap() {
+        Debug.Log("Creating action map");
+        AddAction(eventHandler.OnFire, () => Fire());
+        AddAction(eventHandler.OnFireStart, () => IsFiring = CurrentAmmo > 0 || IsFiring);
+        AddAction(eventHandler.OnFireEnd, () => IsFiring = false);
+
+        AddAction(eventHandler.OnReloadStart, () => Reload());
+
+        AddAction(eventHandler.OnAimStart, () => {
             IsAiming = true;
-            currentInaccuracy = properties.inaccuracy / 3.0f;
+            currentInaccuracy = Properties.inaccuracy / 3.0f;
         });
-        eventHandler.OnAimEnd.AddListener(() => {
+        AddAction(eventHandler.OnAimEnd, () => {
             IsAiming = false;
-            currentInaccuracy = properties.inaccuracy;
+            currentInaccuracy = Properties.inaccuracy;
         });
     }
 
-    protected virtual void RemoveEvents() {
-        eventHandler.OnFire.RemoveListener(() => Fire());
-        eventHandler.OnFireStart.RemoveListener(() => IsFiring = true);
-        eventHandler.OnFireEnd.RemoveListener(() => IsFiring = false);
+    protected virtual void AddEventListeners() {
+        foreach (var pair in eventMap) {
+            UnityEvent evt = pair.Key;
+            UnityAction act = pair.Value;
+            evt.AddListener(act);
+        }
+    }
 
-        eventHandler.OnReloadStart.RemoveListener(() => Reload());
-
-        eventHandler.OnAimStart.RemoveListener(() => {
-            IsAiming = true;
-            currentInaccuracy = properties.inaccuracy / 3.0f;
-        });
-        eventHandler.OnAimEnd.RemoveListener(() => {
-            IsAiming = false;
-            currentInaccuracy = properties.inaccuracy;
-        });
+    protected virtual void RemoveEventListeners() {
+        foreach (var pair in eventMap) {
+            UnityEvent evt = pair.Key;
+            UnityAction act = pair.Value;
+            if (act != null) evt.RemoveListener(act);
+        }
     }
 
     // Creates a directional vector from the cam and modify its end point to a random location up to currentInaccuracy away.
