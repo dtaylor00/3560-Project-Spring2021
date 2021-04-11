@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class Power_Up : MonoBehaviour
 {
+    [SerializeField]
+    public typeOfPowerUp type;
+
+    public float valueToSet;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player"){
-            
+            if(type == typeOfPowerUp.Jump){
+                other.gameObject.GetComponent<Movement_FPS>().jumpHeight = valueToSet;
+                Destroy(this.gameObject);
+            }
+            else if(type == typeOfPowerUp.Sprint){
+                other.gameObject.GetComponent<Movement_FPS>().sprintModifier = valueToSet;
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+
+
+    public enum typeOfPowerUp { 
+        Jump = 0,
+        Sprint = 1
     }
 }
