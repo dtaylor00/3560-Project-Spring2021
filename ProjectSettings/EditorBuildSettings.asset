@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Anthony/MainMenu.unity
     guid: a514948355701f74eaf75072bfa2380f
+  - enabled: 1
+    path: Assets/Anthony/scene.unity
+    guid: bd964a90e96a7bc4f8dd9c7433f65677
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bc2577911cdec8544875fa5f694abdad, type: 2}
