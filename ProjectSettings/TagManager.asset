@@ -5,17 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Capsule
+  - Bullet
+  - Zombie
+  - Fireball
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Zombie
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Bullets
+  - Fireball
+  - Radar
+  - invisible
   - 
   - 
   - 

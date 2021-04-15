@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 public class Health : MonoBehaviour
 {
     [SerializeField]
@@ -31,28 +32,29 @@ public class Health : MonoBehaviour
     }
 
     private void Update(){
-        if (InputSystem.GetDevice<Keyboard>().eKey.wasPressedThisFrame)
-            ModifyHealth(-10);
 
-        print(currentHealth);
         isDead();
     }
 
     private bool isDead(){
         if (currentHealth <= 0)
         {
-            print("whoops im dead");
             if(tag == "Player")
             {
-                print("player dead.");
                 Destroy(this.gameObject);
             }
+            if (GetComponent<NavMeshAgent>() != null)
+            {
+                Destroy(GetComponent<NavMeshAgent>());
+                
+            }
+            Destroy(this.gameObject);
             //death();
+            Destroy(this.gameObject);
             return true;
         }
         else
         {
-            print("dang im alive");
             return false;
         }
     }
