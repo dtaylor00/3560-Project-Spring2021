@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-<<<<<<< HEAD
-public class MeleeZombie : ZombieAI
-{
-    [Header("Melee Zombie")]
-=======
+
 public class MeleeZombie:ZombieAI{
->>>>>>> parent of 99caf57 (Merge pull request #37 from hi-names-nat/Dakota)
+    [Header("Melee Zombie")]
     public int damageToDeal = -20;
     public float zombieSpeed = 5;
     public Animator animator;
@@ -17,22 +13,6 @@ public class MeleeZombie:ZombieAI{
     public float hitDist;
     protected float attackTimer = 0;
     public float attackTime;
-<<<<<<< HEAD
-
-    protected override void Chasing()
-    {
-        if (nm.speed < 20)
-        {
-            nm.speed = zombieSpeed + Mathf.Sqrt(Time.time);
-        }
-        if (Mathf.Abs(dist) < 2)
-        {
-            changeState(AIState.attack);
-        }
-    }
-    protected override void Attack()
-    {
-=======
     protected override void Chasing(){
         if(nm.speed < 10){
             nm.speed = zombieSpeed + Mathf.Sqrt(Time.time);
@@ -43,7 +23,6 @@ public class MeleeZombie:ZombieAI{
         }
     }
     protected override void Attack(){
->>>>>>> parent of 99caf57 (Merge pull request #37 from hi-names-nat/Dakota)
         if (Mathf.Abs(dist) > 2)
         {
             changeState(AIState.chasing);
