@@ -9,14 +9,20 @@ public class MeleeZombie:ZombieAI{
     public float zombieSpeed = 5;
     public float radius;
     public float hitDist;
-    protected float attackTimer = 0; 
+    protected float attackTimer = 0;
     public float attackTime;
+
+    public Health health;
+    public void Awake() {
+        health = GetComponent<Health>();
+    }
 
     protected override void Chasing(){
         if(nm.speed < 20){
             nm.speed = zombieSpeed + Mathf.Sqrt(Time.time);
         }
         if(Mathf.Abs(dist) < 2){
+            Debug.Log("attacking");
             changeState(AIState.attack);
         }
     }
@@ -41,6 +47,9 @@ public class MeleeZombie:ZombieAI{
         {
             attackTimer -= Time.deltaTime;
             print("tick!");
+        }
+        if (health.isDead()) {
+            gameObject.SetActive(false);
         }
     }
 }

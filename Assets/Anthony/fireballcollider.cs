@@ -9,9 +9,10 @@ public class fireballcollider : MonoBehaviour
     [SerializeField] float destroyTime = 5f;
     void Start(){
         Destroy(this.gameObject, destroyTime);
+        gameObject.tag = "Bullet";
         Rigidbody rd =GetComponent<Rigidbody>();
         Transform target = GameObject.FindGameObjectWithTag("Player").transform;
-        playerHealthController = target.GetComponent<Health>(); 
+        playerHealthController = target.GetComponent<Health>();
 
     }
     void OnTriggerEnter(Collider collision){

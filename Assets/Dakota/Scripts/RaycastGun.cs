@@ -2,7 +2,7 @@
  * File:		 RaycastGun.cs
  * Author:		 Dakota Taylor
  * Created:		 20 March 2021
- * Modified:	 06 April 2021
+ * Modified:	 15 April 2021
  * Desc:		 A gunbase that implements the firing mechanic with raycasts for bullets. The bullet is instant and collision is handled upon fire; is either a hit or miss, no dodging.
  */
 
@@ -21,9 +21,10 @@ public class RaycastGun : GunBase {
             Debug.DrawRay(bullet.origin, bullet.direction * Properties.maxDistance, Color.red, 5);
 
             Physics.Raycast(bullet, out RaycastHit rayhit, Properties.maxDistance);
-            if (rayhit.collider != null) {
+            if (rayhit.collider != null && rayhit.collider.tag != "Bullet") {
                 var healthScript = rayhit.collider.gameObject.GetComponent<Health>();
-                healthScript?.ModifyHealth((int)Properties.damage);
+                Debug.Log("hit: " + healthScript + " doing " + (int)-Properties.damage + " damage");
+                healthScript?.ModifyHealth((int)-Properties.damage);
             }
         }
     }

@@ -8,6 +8,17 @@ public class Bosszombie:ZombieAI
     public int damageToDeal = -20;
     public float zombieSpeed = 0;
     public Animator animator;
+
+    public Health health;
+    public void Awake(){
+        health = GetComponent<Health>();
+    }
+    public void Update() {
+        if (health.isDead()) {
+            gameObject.SetActive(false);
+        }
+    }
+
     protected override void Chasing(){
         findrotation();
         nm.speed = 0;
@@ -22,7 +33,7 @@ public class Bosszombie:ZombieAI
             aiState = AIState.chasing;
             animator.SetBool("Attack", false);
         }
-        Vector3 left = transform.position;
+        Vector3 left = transform.position + transform.forward * 5;
         left.y += 3;
         GameObject fireball = Instantiate(fireballcollider,left,transform.rotation) as GameObject;
         Rigidbody rb = fireball.GetComponent<Rigidbody>();

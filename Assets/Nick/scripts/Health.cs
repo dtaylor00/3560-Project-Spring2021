@@ -34,17 +34,17 @@ public class Health : MonoBehaviour
         if (InputSystem.GetDevice<Keyboard>().eKey.wasPressedThisFrame)
             ModifyHealth(-10);
 
-        print(currentHealth);
+        // print(currentHealth);
         isDead();
     }
 
-    private bool isDead(){
+    public bool isDead(){
         if (currentHealth <= 0)
         {
-            print("whoops im dead");
+            // print("whoops im dead");
             if(tag == "Player")
             {
-                print("player dead.");
+                // print("player dead.");
                 Destroy(this.gameObject);
             }
             //death();
@@ -52,7 +52,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            print("dang im alive");
+            // print("dang im alive");
             return false;
         }
     }

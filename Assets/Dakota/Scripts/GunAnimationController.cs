@@ -2,7 +2,7 @@
  * File:		 GunAnimationController.cs
  * Author:		 Dakota Taylor
  * Created:		 05 April 2021
- * Modified:	 06 April 2021
+ * Modified:	 18 April 2021
  * Desc:		 A class that updates the animator when the gun state changes.
  */
 
@@ -16,6 +16,7 @@ using UnityEngine.Events;
 public class GunAnimationController {
     public Animator animator;
     public Action<IGunState> UpdateAnimator;
+    public UnityAction FireTrigger;
 
     public GunAnimationController() {
         CreateActions();
@@ -23,9 +24,11 @@ public class GunAnimationController {
 
     private void CreateActions() {
         UpdateAnimator = state => {
-            animator.SetBool("IsFiring", state.IsFiring);
+            animator.SetBool("IsFiring", state.IsFiring); // NOTE: May not be need anymore with the event handler
             animator.SetBool("IsReloading", state.IsReloading);
         };
+
+        FireTrigger = () => animator.SetTrigger("Fire");
     }
 
     public void AddStateChanges(IGunState state) {
@@ -36,4 +39,11 @@ public class GunAnimationController {
         state.OnStateChanged -= UpdateAnimator;
     }
 
+    public void AddGunEvents(IGunEvents events) {
+        events.OnFire.AddListener(FireTrigger);
+    }
+
+    public void RemoveGunEvents(IGunEvents events) {
+        events.OnFire.RemoveListener(FireTrigger);
+    }
 }

@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba4cce27916a2d4f90e6c1f2172d901, type: 3}
   m_Name: m4_carbine_data
   m_EditorClassIdentifier: 
+  gunName: M4 Carbine
   properties:
-    type: 0
-    damage: 1
+    type: 2
+    damage: 15
     fireRate: 0.6
     maxAmmo: 30
     reloadTime: 3
     maxDistance: 45
-    inaccuracy: 0.06
-    bulletSpeed: 1
+    inaccuracy: 0.04
     ammoPerShot: 1
     bulletsPerAmmo: 1
     shotsPerTrigger: 3
     shotRate: 0.05
+    bulletSpeed: 1
+    bullet: {fileID: 0}
   viewModel:
     gunModel: {fileID: 919132149155446097, guid: 9b95050a95c5ae94681657b43e12b571, type: 3}
     animatorController: {fileID: 22100000, guid: efdd719d66bdc4f4fbbea6b9fa14c332, type: 2}

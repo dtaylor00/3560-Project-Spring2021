@@ -18,15 +18,17 @@ public class Radar : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        createRadarObjects();
         if (loadZombies)
         {
             trackedObjects = GameObject.FindGameObjectsWithTag("Zombie");
         }
+        createRadarObjects();
     }
 
-    void Update(){
-        for(int i = 0; i < radarObjects.Count; i++){
+    void Update() {
+        for (int i = 0; i < radarObjects.Count; i++) {
+            if (!radarObjects[i].activeSelf) continue; // FIXME: Hacky fix for now. Need to handle when a radar object is deleted from scene
+
             if(Vector3.Distance(radarObjects[i].transform.position, transform.position) > switchDistance){
                 helpTransform.LookAt(radarObjects[i].transform);
                 //borderObjects[i].transform.position = transform.position + switchDistance*helpTransform.forward;
@@ -34,10 +36,11 @@ public class Radar : MonoBehaviour
                 radarObjects[i].layer = LayerMask.NameToLayer("Invisible");
             }else{
                 borderObjects[i].layer = LayerMask.NameToLayer("Invisible");
-                radarObjects[i].layer = LayerMask.NameToLayer("Rader");
+                radarObjects[i].layer = LayerMask.NameToLayer("Radar");
             }
         }
     }
+
     // Update is called once per frame
     void createRadarObjects(){
 
@@ -45,9 +48,13 @@ public class Radar : MonoBehaviour
         borderObjects = new List<GameObject>();
         foreach (GameObject o in trackedObjects){
             GameObject k = Instantiate(radarPrefab, o.transform.position, Quaternion.identity) as GameObject;
+            k.transform.SetParent(o.transform);
+            k.transform.position += new Vector3(0, -2, 0);
             radarObjects.Add(k);
             GameObject j = Instantiate(radarPrefab, o.transform.position, Quaternion.identity) as GameObject;
             borderObjects.Add(j);
+            j.transform.SetParent(o.transform);
+            j.transform.position += new Vector3(0, -2, 0);
         }
     }
 }

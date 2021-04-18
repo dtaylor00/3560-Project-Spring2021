@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 4618619865318993394}
   - component: {fileID: 4618619865318993395}
   - component: {fileID: 4618619865318993405}
+  - component: {fileID: 1243581224100142712}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Untagged
@@ -252,12 +253,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e3ee9ed601e0f459b72029514baf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthController: {fileID: 0}
   target: {fileID: 0}
   ThinkSleepSeconds: 0.25
   damageToDeal: -20
   zombieSpeed: 0
-  animator: {fileID: 4618619865201204609}
+  radius: 0
+  hitDist: 0
+  attackTime: 0
+  health: {fileID: 0}
 --- !u!114 &4618619865318993405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +273,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1eb594aa77bd14b8f93aac176caef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
+--- !u!136 &1243581224100142712
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4618619865318993393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7554588, z: 0}
 --- !u!1 &4618619865375308561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,7 +2424,7 @@ Animator:
   m_GameObject: {fileID: 4618619866774855570}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0fb38e6e3c0130d45a98c6cb97d4a727, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

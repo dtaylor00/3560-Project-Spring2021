@@ -2,7 +2,7 @@
  * File:		 GunBase.cs
  * Author:		 Dakota Taylor
  * Created:		 08 February 2021
- * Modified:	 06 April 2021
+ * Modified:	 18 April 2021
  * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes need to implement the firing mechanic and can add onto the events fired with AddEvents/RemoveEvents.
  */
 
@@ -27,6 +27,7 @@ public abstract class GunBase : MonoBehaviour, IGunState {
 
     public GunViewModel ViewModel => gunData.viewModel;
     public GunProperties Properties => gunData.properties;
+    // public GunEffect Effects => gunData.effects;
 
     // various variables need to get and keep track of gun state
     public event Action<IGunState> OnStateChanged = delegate { };
@@ -76,6 +77,12 @@ public abstract class GunBase : MonoBehaviour, IGunState {
         this.eventHandler = eventHandler;
         CreateEventMap();
         gameObject.SetActive(activeState);
+    }
+
+    public void Initialize(GunData data, Transform transform, IGunEvents eventHandler) {
+        this.gunData = data;
+        this.spawnTransform = transform;
+        SetEventHandler(eventHandler);
     }
 
     public void Awake() {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Capsule
   - Bullet
+  - Zombie
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Bullets
-  - 
-  - 
+  - Radar
+  - Invisible
   - 
   - 
   - 

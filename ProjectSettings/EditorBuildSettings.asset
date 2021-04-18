@@ -7,9 +7,15 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Nat/LevelProto.unity
     guid: de46af675f00c984ba323b5e0cbb01c1
+  - enabled: 1
+    path: Assets/Dakota/Scenes/MainMenu.unity
+    guid: fc189f67c8f53d84db51b05af46eb8df
+  - enabled: 1
+    path: Assets/Dakota/Scenes/GameScene.unity
+    guid: 6c77a8effaea64e41afe44bddb9a4a13
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bc2577911cdec8544875fa5f694abdad, type: 2}
