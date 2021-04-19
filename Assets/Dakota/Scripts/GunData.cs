@@ -2,7 +2,7 @@
  * File:		 GunData.cs
  * Author:		 Dakota Taylor
  * Created:		 05 April 2021
- * Modified:	 17 April 2021
+ * Modified:	 18 April 2021
  * Desc:		 A scriptable object that contains the data of a gun, including its properties and model.
  */
 
@@ -14,7 +14,7 @@ public class GunData : ScriptableObject {
     public string gunName;
     [SerializeField] public GunProperties properties;
     [SerializeField] public GunViewModel viewModel;
-    // [SerializeField] public GunEffect effects;
+    [SerializeField] public GunEffect effects;
 }
 
 [Serializable]
@@ -70,11 +70,11 @@ public class GunViewModel {
 [Serializable]
 public class GunEffect {
     [Tooltip("Tracers")]
-    public GameObject tracers;
+    public ParticleSystem tracers;
     [Tooltip("Muzzle Flash")]
-    public GameObject muzzleFlash;
+    public ParticleSystem muzzleFlash;
     [Tooltip("Impact Effect")]
-    public GameObject impactEffect;
+    public ParticleSystem impactEffect;
     [Tooltip("Offset")]
     public Vector3 effectOffset = Vector3.zero;
     [Tooltip("Rotation")]

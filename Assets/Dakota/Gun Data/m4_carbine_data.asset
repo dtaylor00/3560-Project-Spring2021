@@ -16,7 +16,7 @@ MonoBehaviour:
   properties:
     type: 2
     damage: 15
-    fireRate: 0.6
+    fireRate: 0.45
     maxAmmo: 30
     reloadTime: 3
     maxDistance: 45
@@ -24,7 +24,7 @@ MonoBehaviour:
     ammoPerShot: 1
     bulletsPerAmmo: 1
     shotsPerTrigger: 3
-    shotRate: 0.05
+    shotRate: 0.1
     bulletSpeed: 1
     bullet: {fileID: 0}
   viewModel:
@@ -33,3 +33,9 @@ MonoBehaviour:
     gunOffset: {x: 0.26, y: -0.14, z: 0.25}
     gunRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
     crosshair: {fileID: 21300000, guid: 7d7e3d4c78b32f648b40888bfc6db8d0, type: 3}
+  effects:
+    tracers: {fileID: 8014157198079256132, guid: cbde1476d64db5948944beb3f4386d1b, type: 3}
+    muzzleFlash: {fileID: 4769596282521460919, guid: 74d0a46d10ed6aa458fd00932b714327, type: 3}
+    impactEffect: {fileID: 4348445163305781856, guid: f421f317f5862bb4091cd488e86ef8ec, type: 3}
+    effectOffset: {x: 0, y: 0, z: -0.5}
+    effectRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

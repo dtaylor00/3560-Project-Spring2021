@@ -25,7 +25,7 @@ MonoBehaviour:
     bulletsPerAmmo: 10
     shotsPerTrigger: 1
     shotRate: 0
-    bulletSpeed: 10
+    bulletSpeed: 15
     bullet: {fileID: 3411489023759306069, guid: f7f42d0a41aca8944bbe8b2ab7fe5a25, type: 3}
   viewModel:
     gunModel: {fileID: 919132149155446097, guid: 1b251a76311533f49a3a32ac05b3e3e7, type: 3}
@@ -33,3 +33,9 @@ MonoBehaviour:
     gunOffset: {x: 0.25, y: -0.12, z: 0.35}
     gunRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
     crosshair: {fileID: 21300000, guid: 666f45a1953efde4aacb8867e4d0d8f5, type: 3}
+  effects:
+    tracers: {fileID: 8014157198079256132, guid: cbde1476d64db5948944beb3f4386d1b, type: 3}
+    muzzleFlash: {fileID: 4170573657530346903, guid: d255516fea2f24d47881695ea0caf667, type: 3}
+    impactEffect: {fileID: 4348445163305781856, guid: f421f317f5862bb4091cd488e86ef8ec, type: 3}
+    effectOffset: {x: 0, y: 0, z: -0.425}
+    effectRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

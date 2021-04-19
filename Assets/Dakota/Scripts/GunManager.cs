@@ -2,7 +2,7 @@
  * File:		 GunManager.cs
  * Author:		 Dakota Taylor
  * Created:		 05 April 2021
- * Modified:	 18 April 2021
+ * Modified:	 19 April 2021
  * Desc:		 A script that holds the player's guns and manages switching between guns and other respective UI stuff.
  */
 
@@ -21,7 +21,8 @@ public class GunManager : MonoBehaviour {
     public GunBase primaryGun;
     public GunEventHandler eventHandler;
     [SerializeField] public GunAnimationController animationController;
-    // public GunEffectController gunEffectController;
+    [SerializeField] public GunEffectController gunEffectController;
+    public bool allowRuntimeChanges = true;
 
     public Camera renderCamera;
     protected MasterInput inputController; // NOTE: For switching weapons. Might be move into the event handler. 
@@ -41,6 +42,7 @@ public class GunManager : MonoBehaviour {
     public void OnEnable() {
         inputController.Enable();
         animationController.AddGunEvents(eventHandler);
+        gunEffectController.AddEffects(eventHandler);
         inputController.Player.SwitchWeapon.performed += ctx => SwitchWeapon(ctx.ReadValue<float>());
         if (primaryGun != null) EnableGun(primaryGun);
     }
@@ -48,6 +50,7 @@ public class GunManager : MonoBehaviour {
     public void OnDisable() {
         inputController.Disable();
         animationController.RemoveGunEvents(eventHandler);
+        gunEffectController.RemoveEffects(eventHandler);
         inputController.Player.SwitchWeapon.performed -= ctx => SwitchWeapon(ctx.ReadValue<float>());
         if (primaryGun != null) DisableGun(primaryGun);
     }
@@ -71,7 +74,7 @@ public class GunManager : MonoBehaviour {
             if (guns.Count == 0) {
                 primaryGun = gun;
                 EnableGun(primaryGun);
-                CreateViewModel();
+                CreateViewModel(allowRuntimeChanges, false);
             }
             guns.Add(gun);
         }
@@ -81,23 +84,21 @@ public class GunManager : MonoBehaviour {
         gun.SetEventHandler(eventHandler);
         eventHandler.SetStateController(gun);
         animationController.AddStateChanges(gun);
-        // gunEffectController.AddEffects();
         gun.gameObject.SetActive(true);
     }
 
     public void DisableGun(GunBase gun) {
         gun.gameObject.SetActive(false);
         animationController.RemoveStateChanges(gun);
-        // gunEffectController.RemoveEffects();
     }
 
     public void SwitchWeapon(float delta) {
-        if (guns.Count == 0 || !primaryGun.CanSwitch()) return;
+        if (guns.Count <= 1 || !primaryGun.CanSwitch()) return;
 
         DisableGun(primaryGun);
         primaryGun = delta > 0 ? NextGun() : PreviousGun(); // positive = scrolled up = next
         EnableGun(primaryGun);
-        CreateViewModel();
+        CreateViewModel(allowRuntimeChanges, false);
     }
 
     public GunBase NextGun() {
@@ -118,29 +119,43 @@ public class GunManager : MonoBehaviour {
         return guns[selectedGun];
     }
 
-    public void CreateViewModel() {
+    public void CreateViewModel(bool allowChanges, bool destroyImmediate) {
+        if (!allowChanges) return;
+
+        void DestroyObject(GameObject gameObject) {
+            if (destroyImmediate) DestroyImmediate(gameObject);
+            else Destroy(gameObject);
+        }
+
         var viewModel = primaryGun.ViewModel;
         Transform previousChild; // used for deleting the existing view model
 
         var model = Instantiate(viewModel.gunModel, viewModel.gunOffset, viewModel.gunRotation);
         model.name = "Primary Gun";
 
-        var animator = model.AddComponent(typeof(Animator)) as Animator;
+        var animator = model.AddComponent<Animator>();
         animator.runtimeAnimatorController = viewModel.animatorController;
         animationController.animator = animator;
 
-        // var effects = primaryGun.Effects;
+        var effects = primaryGun.Effects;
 
-        // var muzzleFlash = Instantiate(effects.muzzleFlash, effects.effectOffset, effects.effectRotation);
-        // muzzleFlash.name = "Muzzle Flash";
-        // gunEffectController.muzzleFlash = muzzleFlash.GetComponent<ParticleSystem>();
-        // gunEffectController.events = eventHandler;
+        var muzzleFlash = Instantiate(effects.muzzleFlash, effects.effectOffset, effects.effectRotation);
+        muzzleFlash.name = "Muzzle Flash";
+        gunEffectController.muzzleFlash = muzzleFlash;
 
+        var tracers = Instantiate(effects.tracers, effects.effectOffset, effects.effectRotation);
+        tracers.name = "Tracers";
+        gunEffectController.tracers = tracers;
+        gunEffectController.AddParticleListener();
+
+        gunEffectController.impactEffect = effects.impactEffect;
 
         previousChild = renderCamera.transform.Find("Primary Gun");
-        if (previousChild != null) DestroyImmediate(previousChild.gameObject);
+        if (previousChild != null) DestroyObject(previousChild.gameObject);
         model.transform.SetParent(renderCamera.transform, false);
-        // muzzleFlash.transform.SetParent(model.transform, false);
+        muzzleFlash.transform.SetParent(model.transform, false);
+        tracers.transform.SetParent(model.transform, false);
+
 
         // Creating crosshair in front of camera
         var guiCanvas = GameObject.Find("Gun GUI Canvas");
@@ -169,21 +184,24 @@ public class GunManager : MonoBehaviour {
         image.SetNativeSize();
 
         previousChild = guiCanvas.transform.Find("Crosshair Image");
-        if (previousChild != null) DestroyImmediate(previousChild.gameObject);
+        if (previousChild != null) DestroyObject(previousChild.gameObject);
         crosshairImage.transform.SetParent(guiCanvas.transform, false);
     }
-}
+
 
 #if UNITY_EDITOR
-// A custom editor that adds a button that creates view model so changes can be seen in the editor.
-[CustomEditor(typeof(GunManager))]
-public class GunManagerInspector : Editor {
-    public override void OnInspectorGUI() {
-        DrawDefaultInspector();
-        if (GUILayout.Button("Create View Model")) {
-            var manager = target as GunManager;
-            manager.CreateViewModel();
+    // A custom editor that adds a button that creates view model so changes can be seen in the editor.
+    [CustomEditor(typeof(GunManager))]
+    public class GunManagerInspector : Editor {
+        public override void OnInspectorGUI() {
+            DrawDefaultInspector();
+            if (GUILayout.Button("Create View Model")) {
+                var manager = target as GunManager;
+                manager.CreateViewModel(true, true);
+                EditorUtility.SetDirty(manager);
+
+            }
         }
     }
-}
 #endif
+}

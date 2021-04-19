@@ -2,7 +2,7 @@
  * File:		 GunBase.cs
  * Author:		 Dakota Taylor
  * Created:		 08 February 2021
- * Modified:	 18 April 2021
+ * Modified:	 19 April 2021
  * Desc:		 An abstract script for a base gun. Handles and updates the state of the gun, which is used by the GunEventHandler to fire events. Inherited classes need to implement the firing mechanic and can add onto the events fired with AddEvents/RemoveEvents.
  */
 
@@ -11,7 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Linq;
 
 public abstract class GunBase : MonoBehaviour, IGunState {
     // Gun parameters, these values mostly should be treated as if they were constants or readonly
@@ -19,15 +18,13 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     [SerializeField] protected GunData gunData;
     [Tooltip("Transform used to spawn the bullet")]
     [SerializeField] protected Transform spawnTransform;
-    [Tooltip("particle system that does tracers")]
-    [SerializeField] protected ParticleSystem tracers;
 
     protected IGunEvents eventHandler;
     protected Dictionary<UnityEvent, UnityAction> eventMap = new Dictionary<UnityEvent, UnityAction>();
 
     public GunViewModel ViewModel => gunData.viewModel;
     public GunProperties Properties => gunData.properties;
-    // public GunEffect Effects => gunData.effects;
+    public GunEffect Effects => gunData.effects;
 
     // various variables need to get and keep track of gun state
     public event Action<IGunState> OnStateChanged = delegate { };
@@ -113,7 +110,6 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     }
 
     public virtual void Fire() {
-        tracers?.Emit(1);
         lastFired = Time.time;
     }
 
