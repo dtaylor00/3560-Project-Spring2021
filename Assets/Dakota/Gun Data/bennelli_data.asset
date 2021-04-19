@@ -15,18 +15,18 @@ MonoBehaviour:
   gunName: Bennelli
   properties:
     type: 1
-    damage: 10
+    damage: 5
     fireRate: 1.25
     maxAmmo: 60
     reloadTime: 4.5
     maxDistance: 30
-    inaccuracy: 0.15
+    inaccuracy: 0.3
     ammoPerShot: 1
-    bulletsPerAmmo: 10
+    bulletsPerAmmo: 15
     shotsPerTrigger: 1
     shotRate: 0
-    bulletSpeed: 15
-    bullet: {fileID: 3411489023759306069, guid: f7f42d0a41aca8944bbe8b2ab7fe5a25, type: 3}
+    bulletSpeed: 25
+    bullet: {fileID: 3518755479937991047, guid: f315ba7cf228eb241b0ce6d4dc950e2a, type: 3}
   viewModel:
     gunModel: {fileID: 919132149155446097, guid: 1b251a76311533f49a3a32ac05b3e3e7, type: 3}
     animatorController: {fileID: 22100000, guid: ded6c98392b0d934e810829503b85140, type: 2}

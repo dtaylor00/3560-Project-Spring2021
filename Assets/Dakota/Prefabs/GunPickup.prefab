@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1102966999751075681}
   - component: {fileID: 6230704384159240407}
   - component: {fileID: 6144889137469207291}
+  - component: {fileID: 39425322767045737}
   m_Layer: 0
   m_Name: GunPickup
   m_TagString: Untagged
@@ -46,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9d41aee1be7ae4995ad22a061aee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
+  oscillateHeight: 0.25
+  oscillateFrequency: 1
+  rotationSpeed: 1
 --- !u!33 &1102966999751075681
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -108,3 +113,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &39425322767045737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622369438827483867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.3139347, b: 0, a: 0.11764706}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

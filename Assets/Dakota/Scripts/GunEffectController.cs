@@ -61,6 +61,8 @@ public class GunEffectController {
 
     // NOTE: Some problems probably lies around this functionality
     public void AddParticleListener() {
+        if (tracers == null) return;
+
         listener = tracers.gameObject.GetComponent<ParticleCollisionListener>()
                 ?? tracers.gameObject.AddComponent<ParticleCollisionListener>();
 

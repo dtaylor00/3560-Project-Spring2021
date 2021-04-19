@@ -15,7 +15,7 @@ using UnityEngine.Events;
 public class ParticleCollisionListener : MonoBehaviour {
     public UnityEvent<GameObject> OnCollision = new UnityEvent<GameObject>();
     void OnParticleCollision(GameObject other) {
-        Debug.Log("on particle collision");
+        // Debug.Log("on particle collision");
         OnCollision?.Invoke(other);
     }
 }
