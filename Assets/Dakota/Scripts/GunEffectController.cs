@@ -38,8 +38,7 @@ public class GunEffectController {
             tracers.GetCollisionEvents(other, events);
             foreach (var e in events) {
                 var effect = GameObject.Instantiate(impactEffect, e.intersection, Quaternion.identity);
-
-                if (e.colliderComponent.gameObject.tag == "Zombie") {
+                if (e.colliderComponent?.gameObject.tag == "Zombie") {
                     var main = effect.main;
                     main.startColor = Color.red;
                 }

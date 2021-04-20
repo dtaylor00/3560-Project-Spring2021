@@ -4820,7 +4820,7 @@ GameObject:
   - component: {fileID: 1522621954285926850}
   m_Layer: 0
   m_Name: fireballcollider
-  m_TagString: Fireball
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4930,4 +4930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427423a33ca52514ab15ba12d44270fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageToDeal: -100
+  playerHealthController: {fileID: 0}
   destroyTime: 5

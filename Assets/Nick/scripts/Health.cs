@@ -5,55 +5,24 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.InputSystem;
-public class Health : MonoBehaviour
-{
-    [SerializeField]
-    private int maxHealth = 100;
-
+public class Health : MonoBehaviour {
+    [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
-    //public delegate void doOnDie();
-
-    //public static doOnDie death = new doOnDie();
-
     public event Action<float> OnHealthPctChanged = delegate { };
+    public event Action OnDeath = delegate { };
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         currentHealth = maxHealth;
+        OnHealthPctChanged += percent => {
+            if (percent <= 0) OnDeath.Invoke();
+        };
     }
 
-    public void ModifyHealth(int amount){
-        currentHealth += amount;
+    public void ModifyHealth(int amount) {
+        currentHealth = Mathf.Clamp(currentHealth + amount, -maxHealth, maxHealth);
 
-        float currentHealthPct = (float)currentHealth / (float)maxHealth;
+        float currentHealthPct = (float)currentHealth / maxHealth;
         OnHealthPctChanged(currentHealthPct);
-    }
-
-    private void Update(){
-        if (InputSystem.GetDevice<Keyboard>().eKey.wasPressedThisFrame)
-            ModifyHealth(-10);
-
-        // print(currentHealth);
-        isDead();
-    }
-
-    public bool isDead(){
-        if (currentHealth <= 0)
-        {
-            // print("whoops im dead");
-            if(tag == "Player")
-            {
-                // print("player dead.");
-                Destroy(this.gameObject);
-            }
-            //death();
-            return true;
-        }
-        else
-        {
-            // print("dang im alive");
-            return false;
-        }
     }
 }

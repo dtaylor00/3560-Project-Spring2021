@@ -68,7 +68,7 @@ public class GunManager : MonoBehaviour {
 
         if (gun != null) {
             gun.Initialize(data, renderCamera.transform, eventHandler);
-            GameObject parent = GameObject.Find("Guns");
+            GameObject parent = GameObject.Find("Guns") ?? new GameObject("Guns");
             gun.transform.SetParent(parent.transform);
 
             if (guns.Count == 0) {
@@ -158,15 +158,14 @@ public class GunManager : MonoBehaviour {
 
 
         // Creating crosshair in front of camera
-        var guiCanvas = GameObject.Find("Gun GUI Canvas");
+        var guiCanvas = GameObject.Find("GUI Canvas");
         if (guiCanvas == null) {
-            guiCanvas = new GameObject("Gun GUI Canvas");
+            guiCanvas = new GameObject("GUI Canvas");
             guiCanvas.layer = 5; // UI layer
 
             var canvas = guiCanvas.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            canvas.worldCamera = renderCamera;
-            canvas.planeDistance = 1;
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.targetDisplay = 0;
 
             var scaler = guiCanvas.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;

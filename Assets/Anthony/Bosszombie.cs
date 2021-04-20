@@ -4,20 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Bosszombie:ZombieAI
 {
-    public GameObject fireballcollider;
+    public fireballcollider fireballcollider;
     public int damageToDeal = -20;
     public float zombieSpeed = 0;
-    public Animator animator;
-
-    public Health health;
-    public void Awake(){
-        health = GetComponent<Health>();
-    }
-    public void Update() {
-        if (health.isDead()) {
-            gameObject.SetActive(false);
-        }
-    }
 
     protected override void Chasing(){
         findrotation();
@@ -35,7 +24,8 @@ public class Bosszombie:ZombieAI
         }
         Vector3 left = transform.position + transform.forward * 5;
         left.y += 3;
-        GameObject fireball = Instantiate(fireballcollider,left,transform.rotation) as GameObject;
+        fireballcollider fireball = Instantiate(fireballcollider,left,transform.rotation);
+        fireball.Initialize(damageToDeal);
         Rigidbody rb = fireball.GetComponent<Rigidbody>();
         rb.velocity = transform.forward * 20f;
         fireball.transform.parent=null;

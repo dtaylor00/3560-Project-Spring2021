@@ -79,13 +79,17 @@ public class HellHound : MeleeZombie
         {
             aiState = AIState.chasing;
         }
-        RaycastHit hit;
-        Physics.SphereCast(transform.position, radius, transform.forward * hitDist, out hit);
+
+        if (Time.time - lastAttack > attackRate) {
+        Physics.SphereCast(transform.position, radius, transform.forward * hitDist, out RaycastHit hit);
         Debug.DrawRay(transform.position, transform.forward * hitDist);
-        if (hit.collider != null && hit.collider.gameObject.GetComponent<Health>() != null && attackTimer <= 0)
-        {
-            hit.collider.gameObject.GetComponent<Health>().ModifyHealth(damageToDeal);
-            attackTimer = attackTime;
+
+            if (hit.collider != null) {
+                var health = hit.collider.GetComponent<Health>();
+                health?.ModifyHealth(damageToDeal);
+            }
+
+            lastAttack = Time.time;
         }
     }
 

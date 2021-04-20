@@ -8,17 +8,25 @@ public abstract class ZombieAI : MonoBehaviour
     [Header("Base AI")]
     protected NavMeshAgent nm;    
     public Transform target;
+    public Animator animator;
     public float ThinkSleepSeconds = .25f;
 
-    public enum AIState {chasing = 0, attack = 1};
+    public enum AIState {chasing = 0, attack = 1, death = 2};
     protected AIState aiState;
     protected float dist;
     public void Start()
-    {
-        
+    {        
         nm = GetComponent<NavMeshAgent>(); 
         aiState = AIState.chasing;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target ??= GameObject.FindGameObjectWithTag("Player").transform;
+        animator ??= GetComponentInChildren<Animator>();
+        var health = GetComponent<Health>();
+        if(health != null)
+            health.OnDeath += () => {
+                animator.SetBool("Death", true);
+                aiState = AIState.death;
+            };
+
         StartCoroutine(Think());
     }
 
@@ -34,6 +42,10 @@ public abstract class ZombieAI : MonoBehaviour
                     break;
                 case AIState.attack:
                     Attack();
+                    break;
+                case AIState.death:
+                    nm.speed = 0;
+                    nm.isStopped = true;
                     break;
                 default:
                     break;

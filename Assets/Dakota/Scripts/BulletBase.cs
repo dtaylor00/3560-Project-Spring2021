@@ -21,9 +21,9 @@ public class BulletBase : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.collider.tag != "Bullet") {
+        var tag = collision.collider.tag;
+        if (tag != "Bullet" && tag != "Player") {
             var healthScript = collision.collider.gameObject.GetComponent<Health>();
-            // Debug.Log("hit: " + healthScript + " doing " + (int)damage + " damage");
             healthScript?.ModifyHealth((int)damage);
             Destroy(gameObject);
         }
