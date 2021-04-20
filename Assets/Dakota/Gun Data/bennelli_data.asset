@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 1
     damage: 5
     fireRate: 1.25
-    maxAmmo: 60
+    maxAmmo: 6
     reloadTime: 4.5
     maxDistance: 30
     inaccuracy: 0.3
