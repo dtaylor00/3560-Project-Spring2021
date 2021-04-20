@@ -18,8 +18,8 @@ public abstract class ZombieAI : MonoBehaviour
     {        
         nm = GetComponent<NavMeshAgent>(); 
         aiState = AIState.chasing;
-        target ??= GameObject.FindGameObjectWithTag("Player").transform;
-        animator ??= GetComponentInChildren<Animator>();
+        target = target ? target : GameObject.FindGameObjectWithTag("Player").transform;
+        animator = animator ? animator : GetComponentInChildren<Animator>();
         var health = GetComponent<Health>();
         if(health != null)
             health.OnDeath += () => {

@@ -11,9 +11,8 @@ public class PlayerHealthManager : MonoBehaviour {
     private float lastHit;
     private float lastRegen;
 
-    // Start is called before the first frame update
     void Start() {
-        Health ??= GetComponent<Health>();
+        Health = Health ? Health : GetComponent<Health>();
         if (Health != null) {
             Health.OnHealthPctChanged += percent => {
                 if (percent < previousPercent) lastHit = Time.time;

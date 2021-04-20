@@ -6,7 +6,7 @@ public class AmmoCount : MonoBehaviour {
     public Text ammoAmount;
     public GunManager ammo;
     void Start() {
-        ammo ??= GameObject.FindGameObjectWithTag("Player").GetComponent<GunManager>();
+        ammo = ammo ? ammo : GameObject.FindGameObjectWithTag("Player").GetComponent<GunManager>();
     }
     void Update() {
         ammoAmount.text = ammo.primaryGun?.CurrentAmmo.ToString();
