@@ -17,7 +17,7 @@ public class Power_Up : MonoBehaviour
                 Destroy(this.gameObject);
             }
             else if(type == typeOfPowerUp.Sprint){
-                other.gameObject.GetComponent<Movement_FPS>().sprintModifier = 2f;
+                other.gameObject.GetComponent<Movement_FPS>().sprintModifier = 1.5f;
                 Destroy(this.gameObject);
             }
         }
