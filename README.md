@@ -29,7 +29,7 @@ Unity has an inbuilt quick compiler so it is possible to open up the source file
  - [x] FPS player controller
  - [x] Enemy zombie AI
  - [x] Second enemy AI 
- - [ ] Upgrade system
+ - [x] Upgrade system
  - [ ] Level design
  - [x] Health system
 
@@ -42,14 +42,14 @@ Unity has an inbuilt quick compiler so it is possible to open up the source file
  - [ ] Ending to game
  - [ ] Multiplayer
 
-What language are we leaning toward?  
-- We will be using C# for this project.  
-What would be an editor? Do we need an IDE?  
-- Visual Studio and Unity, Yes  
-What is the version control software (Git, Mercurial, or SVN)?  
-- Git  
-Are we using framework or library? If yes, what is it?  
-Any tool for documentation?  
-- We are currently not using tools for documentation. We are using XML comments.
-Should there be a build system? Gradle, ant, npm etc?  
-- We will be using Unity's inbuilt build system to build and run our project.  
+## Technology Stack and Tool Chain
+**Programming Language**: C# <br>
+**Development Platform**: Unity (Version 2020.2.3f1) <br>
+**IDE / Editor**: Visual Studio and Visual Studio Code <br>
+**Version Control**: Git <br>
+**Communication Platform**: Microsoft Teams and Discord <br>
+**Build Tools**: Unity's build system <br>
+**Unit Testing Tool**: Unity's test runner <br>
+**Dynamic Analysis Tool**: Unity's profiler <br>
+**Static Analysis Tool**: SonarQube <br>
+**Documentation**: XML comments <br>
