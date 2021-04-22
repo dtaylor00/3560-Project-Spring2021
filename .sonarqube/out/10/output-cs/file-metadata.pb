@@ -1,0 +1,13 @@
+ì
+âD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\Settings.csutf-8ü
+ïD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\UserSettingsProvider.csutf-8§
+öD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\PackageSettingsRepository.csutf-8ï
+ãD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\Attributes.csutf-8ñ
+åD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\UserSetting.csutf-8ù
+ìD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\SettingsDictionary.csutf-8°
+óD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\UserSettingsRepository.csutf-8û
+îD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\ISettingsRepository.csutf-8ó
+çD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\UserSettings.csutf-8ó
+çD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\ValueWrapper.csutf-8ú
+íD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.settings-manager@1.0.3\Editor\SettingsGUILayout.csutf-8_
+TC:\Users\dtayl\AppData\Local\Temp\.NETFramework,Version=v4.7.1.AssemblyAttributes.csutf-8

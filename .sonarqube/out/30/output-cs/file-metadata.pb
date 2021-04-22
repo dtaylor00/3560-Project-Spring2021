@@ -1,0 +1,17 @@
+r
+iD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunEventHandler.csutf-8j
+aD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunData.csutf-8p
+gD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\ProjectileGun.csutf-8l
+cD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\IGunState.csutf-8|
+sD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\ParticleCollisionListener.csutf-8m
+dD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\RaycastGun.csutf-8m
+dD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\BulletBase.csutf-8l
+cD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunPickup.csutf-8j
+aD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunBase.csutf-8m
+dD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\IGunEvents.csutf-8v
+mD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunEffectController.csutf-8y
+pD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunAnimationController.csutf-8w
+nD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunAnimationBehavior.csutf-8m
+dD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\GunManager.csutf-8k
+bD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Assets\Dakota\Scripts\BurstGun.csutf-8_
+TC:\Users\dtayl\AppData\Local\Temp\.NETFramework,Version=v4.7.1.AssemblyAttributes.csutf-8

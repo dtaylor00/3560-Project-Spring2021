@@ -1,0 +1,11 @@
+î
+äD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\Searcher.csutf-8ö
+êD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherWindow.csutf-8õ
+ëD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherControl.csutf-8è
+ÖD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\AssemblyInfo.csutf-8ü
+ïD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherHighlighter.csutf-8ò
+éD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherItem.csutf-8õ
+ëD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherAdapter.csutf-8†
+ñD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherDatabaseBase.csutf-8ú
+íD:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Library\PackageCache\com.unity.searcher@4.3.1\Editor\Searcher\SearcherDatabase.csutf-8_
+TC:\Users\dtayl\AppData\Local\Temp\.NETFramework,Version=v4.7.1.AssemblyAttributes.csutf-8

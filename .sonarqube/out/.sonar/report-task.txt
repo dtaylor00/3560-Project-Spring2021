@@ -1,0 +1,6 @@
+projectKey=3560-Project-Spring2021
+serverUrl=http://localhost:9000
+serverVersion=8.8.0.42792
+dashboardUrl=http://localhost:9000/dashboard?id=3560-Project-Spring2021
+ceTaskId=AXjvHAMQp707v1_4LSSW
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXjvHAMQp707v1_4LSSW

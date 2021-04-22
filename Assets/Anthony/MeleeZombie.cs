@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MeleeZombie : ZombieAI {
@@ -32,11 +33,15 @@ public class MeleeZombie : ZombieAI {
 
         if (Time.time - lastAttack > attackRate) {
             Physics.SphereCast(transform.position + Vector3.up, radius, transform.forward * hitDist, out RaycastHit hit);
+            // Physics.SphereCast(transform.position + Vector3.up, radius, transform.forward * hitDist, out RaycastHit hit,);
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position + Vector3.up, radius, transform.forward * hitDist);
             Debug.DrawRay(transform.position + Vector3.up, transform.forward * hitDist, Color.green, 4);
 
-            if (hit.collider != null) {
+            var player = hits.FirstOrDefault(hit => hit.collider.gameObject == target.gameObject);
+
+            if (player.collider != null) {
                 Debug.Log("hit the player!");
-                var health = hit.collider.GetComponent<Health>();
+                var health = player.collider.GetComponent<Health>();
                 health?.ModifyHealth(damageToDeal);
             }
             lastAttack = Time.time;

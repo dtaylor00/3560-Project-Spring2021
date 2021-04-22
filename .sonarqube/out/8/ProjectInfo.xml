@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Unity.ShaderGraph.Utilities</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>64a72afb-392f-6a43-a750-1578e0e2e79b</ProjectGuid>
+  <FullPath>D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Unity.ShaderGraph.Utilities.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\.sonarqube\out\8\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Temp\bin\Debug\Unity.ShaderGraph.Utilities.dll.RoslynCA.json|D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Temp\bin\Debug\Unity.ShaderGraph.Utilities.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\.sonarqube\out\8</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+</ProjectInfo>

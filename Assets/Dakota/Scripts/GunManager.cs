@@ -2,7 +2,7 @@
  * File:		 GunManager.cs
  * Author:		 Dakota Taylor
  * Created:		 05 April 2021
- * Modified:	 19 April 2021
+ * Modified:	 20 April 2021
  * Desc:		 A script that holds the player's guns and manages switching between guns and other respective UI stuff.
  */
 
@@ -17,7 +17,7 @@ using UnityEditor;
 
 public class GunManager : MonoBehaviour {
 
-    public List<GunBase> guns;
+    public List<GunBase> guns = new List<GunBase>();
     public GunBase primaryGun;
     public GunEventHandler eventHandler;
     [SerializeField] public GunAnimationController animationController;
