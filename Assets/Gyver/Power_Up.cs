@@ -13,11 +13,11 @@ public class Power_Up : MonoBehaviour
     {
         if(other.gameObject.tag == "Player"){
             if(type == typeOfPowerUp.Jump){
-                other.gameObject.GetComponent<Movement_FPS>().jumpHeight = valueToSet;
+                other.gameObject.GetComponent<Movement_FPS>().jumpHeight = 18f;
                 Destroy(this.gameObject);
             }
             else if(type == typeOfPowerUp.Sprint){
-                other.gameObject.GetComponent<Movement_FPS>().sprintModifier = valueToSet;
+                other.gameObject.GetComponent<Movement_FPS>().sprintModifier = 1.5f;
                 Destroy(this.gameObject);
             }
         }

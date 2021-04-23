@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7776747384587941222}
   - component: {fileID: 7776747384587941223}
   - component: {fileID: 7776747384587941220}
+  - component: {fileID: 6444339731278940581}
   m_Layer: 0
   m_Name: BossZombie
   m_TagString: Untagged
@@ -46,13 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd5f8a74d15ec64183461b601d1f676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthController: {fileID: 0}
   target: {fileID: 0}
-  ThinkSleepSeconds: 0.25
-  fireballcollider: {fileID: 8997055029321560696, guid: 7428b5833d7714a4cbac25b73d46ef78, type: 3}
-  damageToDeal: 0
-  zombieSpeed: 0
   animator: {fileID: 963844100006232691}
+  ThinkSleepSeconds: 0.25
+  fireballcollider: {fileID: 1522621954285926850, guid: 7428b5833d7714a4cbac25b73d46ef78, type: 3}
+  damageToDeal: -20
+  zombieSpeed: 0
 --- !u!114 &7776747384587941223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +88,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &6444339731278940581
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776747384587941208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1001 &7776747386318467962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 7389507112651452681, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: f217ae596c13c3d4aa29fb1b9c813695, type: 2}
     - target: {fileID: 8650658897552531052, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

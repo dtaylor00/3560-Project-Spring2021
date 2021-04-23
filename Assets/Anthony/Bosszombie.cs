@@ -8,7 +8,6 @@ public class Bosszombie:ZombieAI
     public int damageToDeal = -20;
     public float zombieSpeed = 0;
     public Animator animator;
-    private int count = 0;
     protected override void Chasing(){
         findrotation();
         nm.speed = 0;
@@ -18,9 +17,8 @@ public class Bosszombie:ZombieAI
         }
     }
     protected override void Attack(){
-
         findrotation();
-        if(dist > 15){
+        if(dist > 30){
             aiState = AIState.chasing;
             animator.SetBool("Attack", false);
         }

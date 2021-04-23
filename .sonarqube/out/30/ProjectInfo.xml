@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>DakotaAssembly</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>6c90423b-263d-0752-2c7d-1ee6926cb17e</ProjectGuid>
+  <FullPath>D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\DakotaAssembly.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\.sonarqube\out\30\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Temp\bin\Debug\DakotaAssembly.dll.RoslynCA.json|D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Temp\bin\Debug\DakotaAssembly.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\.sonarqube\out\30</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+</ProjectInfo>

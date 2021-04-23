@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84f1993c6b3e12438280bec55fb9fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScene: scene
+  newGameScene: gluedsscene
 --- !u!1 &1437234776
 GameObject:
   m_ObjectHideFlags: 0

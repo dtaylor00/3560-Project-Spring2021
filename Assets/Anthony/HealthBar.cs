@@ -6,15 +6,9 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
-    Health playerHealth;
     void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        healthBar.value = playerHealth.GetCurrentHealth();
+        var playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        playerHealth.OnHealthPctChanged += percent => healthBar.value = healthBar.maxValue * percent;
     }
 }

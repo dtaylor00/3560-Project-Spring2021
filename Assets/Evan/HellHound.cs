@@ -1,3 +1,4 @@
+// unused
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -15,6 +16,8 @@ public class HellHound : MeleeZombie
     public float jumpSpeed;
     public float jumpCooldownTime;
 
+    public float lastAttack;
+    public float attackRate = 5;
     [HideInInspector] bool jumpReady = true;
     protected Vector3 leapTop, leapTarget, leapStart;
     protected bool jumpDone = true;
@@ -27,7 +30,8 @@ public class HellHound : MeleeZombie
             nm.speed = zombieSpeed + Mathf.Sqrt(Time.time);
         }
         if (dist < 5 && dist > 2)
-        {   if (jumpReady)
+        {
+            if (jumpReady)
             {
                 print("leap");
                 aiState = AIState.leap;
@@ -79,19 +83,25 @@ public class HellHound : MeleeZombie
         {
             aiState = AIState.chasing;
         }
-        RaycastHit hit;
-        Physics.SphereCast(transform.position, radius, transform.forward * hitDist, out hit);
-        Debug.DrawRay(transform.position, transform.forward * hitDist);
-        if (hit.collider != null && hit.collider.gameObject.GetComponent<Health>() != null && attackTimer <= 0)
+
+        if (Time.time - lastAttack > attackRate)
         {
-            hit.collider.gameObject.GetComponent<Health>().ModifyHealth(damageToDeal);
-            attackTimer = attackTime;
+            Physics.SphereCast(transform.position, radius, transform.forward * hitDist, out RaycastHit hit);
+            Debug.DrawRay(transform.position, transform.forward * hitDist);
+
+            if (hit.collider != null)
+            {
+                var health = hit.collider.GetComponent<Health>();
+                health?.ModifyHealth(damageToDeal);
+            }
+
+            lastAttack = Time.time;
         }
     }
 
     protected IEnumerator Leap()
     {
-            jumpReady = false;
+        jumpReady = false;
         nm.speed += jumpSpeed;
         yield return new WaitForSeconds(jumpTime);
         nm.speed -= jumpSpeed;
@@ -112,7 +122,7 @@ public class HellHound : MeleeZombie
         //    print("leap " + slerpTime);
         //    slerpTime += Time.deltaTime;
         //    transform.position = Vector3.Lerp(leapStart, leapTop, slerpTime);
-            
+
         //    if (slerpTime > 1)
         //    {
         //        print("fffff");
