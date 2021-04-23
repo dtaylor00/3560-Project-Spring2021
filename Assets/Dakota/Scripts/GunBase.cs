@@ -29,7 +29,9 @@ public abstract class GunBase : MonoBehaviour, IGunState {
     protected int currentAmmo;
     protected float currentInaccuracy;
     protected int currentShots;
-
+    public int GetCurrentAmmo(){
+        return(currentAmmo);
+    }
     public void Awake() {
         if (spawnTransform == null)
             spawnTransform = this.GetComponentInChildren<Camera>().transform;

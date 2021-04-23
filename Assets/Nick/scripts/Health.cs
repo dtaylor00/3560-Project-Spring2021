@@ -35,7 +35,9 @@ public class Health : MonoBehaviour
 
         isDead();
     }
-
+    public int GetCurrentHealth(){
+        return(currentHealth);
+    }
     private bool isDead(){
         if (currentHealth <= 0)
         {
