@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Unity.RenderPipelines.Universal.Shaders</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>cc5b3e81-e715-5359-73a9-0f78f4283209</ProjectGuid>
+  <FullPath>D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Unity.RenderPipelines.Universal.Shaders.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\.sonarqube\out\14\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Temp\bin\Debug\Unity.RenderPipelines.Universal.Shaders.dll.RoslynCA.json|D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\Temp\bin\Debug\Unity.RenderPipelines.Universal.Shaders.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">D:\Dakota\OneDriveOU\School\CS3560\repos\3560-Project-Spring2021\.sonarqube\out\14</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+</ProjectInfo>

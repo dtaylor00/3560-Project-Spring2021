@@ -2,7 +2,7 @@
  * File:		 GunEventHandler.cs
  * Author:		 Dakota Taylor
  * Created:		 02 March 2021
- * Modified:	 06 April 2021
+ * Modified:	 20 April 2021
  * Desc:		 A class that uses player input and a gun's state to fire related events. Be sure to set the gun state using SetStateController.
  */
 
@@ -20,19 +20,19 @@ public class GunEventHandler : MonoBehaviour, IGunEvents {
 
     // events
     [SerializeField]
-    private UnityEvent _OnFire, _OnFireStart, _OnFireEnd;
+    private UnityEvent _OnFire = new UnityEvent(), _OnFireStart = new UnityEvent(), _OnFireEnd = new UnityEvent();
     public UnityEvent OnFire { get => _OnFire; private set => _OnFire = value; }
     public UnityEvent OnFireStart { get => _OnFireStart; private set => _OnFireStart = value; }
     public UnityEvent OnFireEnd { get => _OnFireEnd; private set => _OnFireEnd = value; }
 
     [SerializeField]
-    private UnityEvent _OnReload, _OnReloadStart, _OnReloadEnd;
+    private UnityEvent _OnReload = new UnityEvent(), _OnReloadStart = new UnityEvent(), _OnReloadEnd = new UnityEvent();
     public UnityEvent OnReload { get => _OnReload; private set => _OnReload = value; }
     public UnityEvent OnReloadStart { get => _OnReloadStart; private set => _OnReloadStart = value; }
     public UnityEvent OnReloadEnd { get => _OnReloadEnd; private set => _OnReloadEnd = value; }
 
     [SerializeField]
-    private UnityEvent _OnAim, _OnAimStart, _OnAimEnd;
+    private UnityEvent _OnAim = new UnityEvent(), _OnAimStart = new UnityEvent(), _OnAimEnd = new UnityEvent();
     public UnityEvent OnAim { get => _OnAim; private set => _OnAim = value; }
     public UnityEvent OnAimStart { get => _OnAimStart; private set => _OnAimStart = value; }
     public UnityEvent OnAimEnd { get => _OnAimEnd; private set => _OnAimEnd = value; }
