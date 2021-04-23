@@ -30,7 +30,7 @@ Unity has an inbuilt quick compiler so it is possible to open up the source file
  - [x] Enemy zombie AI
  - [x] Second enemy AI 
  - [x] Upgrade system
- - [ ] Level design
+ - [x] Level design
  - [x] Health system
 
 ## Final Deliverable Product / Stretch Goals
