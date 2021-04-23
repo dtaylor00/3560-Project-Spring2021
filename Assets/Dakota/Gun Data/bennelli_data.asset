@@ -15,7 +15,7 @@ MonoBehaviour:
   gunName: Bennelli
   properties:
     type: 1
-    damage: 5
+    damage: 100
     fireRate: 1.25
     maxAmmo: 6
     reloadTime: 4.5

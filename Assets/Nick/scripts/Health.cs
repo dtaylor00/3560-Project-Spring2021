@@ -24,5 +24,6 @@ public class Health : MonoBehaviour {
 
         float currentHealthPct = (float)currentHealth / maxHealth;
         OnHealthPctChanged(currentHealthPct);
+        if (gameObject.tag == "Player") print("my health is " + currentHealth);
     }
 }

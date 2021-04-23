@@ -15,7 +15,7 @@ MonoBehaviour:
   gunName: M4 Carbine
   properties:
     type: 2
-    damage: 9
+    damage: 15
     fireRate: 0.45
     maxAmmo: 30
     reloadTime: 3

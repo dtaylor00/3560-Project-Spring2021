@@ -15,7 +15,7 @@ MonoBehaviour:
   gunName: AK47
   properties:
     type: 0
-    damage: 3
+    damage: 15
     fireRate: 0.15
     maxAmmo: 60
     reloadTime: 2

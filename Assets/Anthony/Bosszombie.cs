@@ -18,7 +18,7 @@ public class Bosszombie:ZombieAI
     }
     protected override void Attack(){
         findrotation();
-        if(dist > 15){
+        if(dist > 30){
             aiState = AIState.chasing;
             animator.SetBool("Attack", false);
         }
