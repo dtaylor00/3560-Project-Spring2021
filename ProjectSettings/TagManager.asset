@@ -7,17 +7,18 @@ TagManager:
   - Capsule
   - Bullet
   - Zombie
+  - Fireball
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Zombie
   - Water
   - UI
   - Bullets
+  - Fireball
   - Radar
-  - Invisible
-  - 
+  - invisible
   - 
   - 
   - 

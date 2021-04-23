@@ -5,14 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Nat/LevelProto.unity
     guid: de46af675f00c984ba323b5e0cbb01c1
-  - enabled: 1
-    path: Assets/Nick/levelPrototype/newLevel.unity
-    guid: 7065e46933126b74ca6612954829b4d8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bc2577911cdec8544875fa5f694abdad, type: 2}
